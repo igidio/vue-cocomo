@@ -10,11 +10,8 @@
     </TableHeader>
     <TableBody>
       <TableRow v-for="(row, index) in data" :key="index">
-        <TableCell class="font-medium" v-for="(value, index) in row" :key="index">
-          <div v-if="typeof value !== 'boolean'">{{ value }}</div>
-          <div v-else>
-            <div v-if="value" class="text-sm"><CircleCheck /></div>
-          </div>
+        <TableCell class="font-medium" v-for="(data, index) in row" :key="index">
+          <TableData :data="data"></TableData>
         </TableCell>
       </TableRow>
     </TableBody>
@@ -33,6 +30,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import type { table_data_interface } from '@/data/interfaces'
+import GlobalTooltip from '@/components/GlobalTooltip.vue'
+import TableData from '@/components/TableData.vue'
 
 interface header {
   label: string
@@ -51,8 +51,8 @@ interface TableData {
 }
 
 const props = defineProps<{
-  caption: string
+  caption?: string
   headers: header[]
-  data:  (string | boolean | number)[][]
+  data:  table_data_interface[][]
 }>()
 </script>

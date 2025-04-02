@@ -1,21 +1,30 @@
 <template>
   <span>Entradas</span>
-<GlobalTable caption="Cálculo de PSA" :headers="columns" :data="mapData"></GlobalTable>
-
-  <span><span class="font-bold">Resultado:</span> {{ ufpResult }}</span>
+  <GlobalTable :headers="columns" :data="mapData"></GlobalTable>
+  <div class="text-end flex flex-col">
+    <div v-for="res in typeResults">
+      {{ res.label }} <span class="font-bold">{{ res.value }}</span>
+    </div>
+    <div>
+      Resultado: <span class="font-bold"> {{ ufpResult }}</span>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { WeightEnum } from '@/data/enums/weight.enum.ts'
 import GlobalTable from '@/components/GlobalTable.vue'
 import { ufpEnum } from '@/data/enums/ufp.enum.ts'
-import { computed } from 'vue'
+import { computed, type ComputedRef } from 'vue'
+import { getComplexity } from '@/data/objets/get_complexity.ts'
+import type { table_data_interface } from '@/data/interfaces'
+import CheckIcon from '@/components/icon/CheckIcon.vue'
 
 const sampleData = [
   {
     value: 'Ingreso al sistema (login)',
     weight: WeightEnum.MEDIUM,
-    type: ufpEnum.EXTERNAL_INPUTS
+    type: ufpEnum.EXTERNAL_INPUTS,
   },
   {
     value: 'Registro de obra',
@@ -35,22 +44,22 @@ const sampleData = [
   {
     value: 'Mensaje de error al ingresar al sistema',
     weight: WeightEnum.LOW,
-    type: ufpEnum.EXTERNAL_INPUTS,
+    type: ufpEnum.EXTERNAL_OUTPUTS,
   },
   {
     value: 'Reporte de obra',
     weight: WeightEnum.MEDIUM,
-    type: ufpEnum.EXTERNAL_INPUTS,
+    type: ufpEnum.EXTERNAL_OUTPUTS,
   },
   {
     value: 'Reporte de seguimiento de obras',
     weight: WeightEnum.MEDIUM,
-    type: ufpEnum.EXTERNAL_INPUTS,
+    type: ufpEnum.EXTERNAL_OUTPUTS,
   },
   {
     value: 'Reporte de materiales',
     weight: WeightEnum.MEDIUM,
-    type: ufpEnum.EXTERNAL_INPUTS,
+    type: ufpEnum.EXTERNAL_OUTPUTS,
   },
   {
     value: 'Listado de obras en ejecución',
@@ -76,7 +85,7 @@ const sampleData = [
     value: 'Listado de items de obra',
     weight: WeightEnum.MEDIUM,
     type: ufpEnum.EXTERNAL_QUERIES,
-  }
+  },
 ]
 const columns = [
   {
@@ -98,55 +107,58 @@ const columns = [
   },
   {
     label: 'Alto',
-    class: 'text-right w-[50px]',
-  }
+    class: 'w-[50px]',
+  },
 ]
 
-const mapData = computed(() => {
-  return sampleData.map((item, index) => {
-    return [
-      index + 1,
-      item.value,
-      item.type,
-      item.weight === WeightEnum.LOW,
-      item.weight === WeightEnum.MEDIUM,
-      item.weight === WeightEnum.HIGH
-    ]
-  })
+const mapData:ComputedRef = computed<table_data_interface[][]>(() => {
+  return sampleData.map((item, index) => [
+    {
+      class: 'font-medium',
+      value: index + 1,
+    },
+    {
+      class: 'text-left',
+      value: item.value,
+    },
+    {
+      class: 'text-left',
+      value: item.type,
+    },
+    {
+      class: 'text-center',
+      value: item.weight === WeightEnum.LOW ? '✅' : '',
+      tooltip: (item.weight === WeightEnum.LOW) && `Peso ${item.weight.toLowerCase()}: ${getComplexity[item.type][item.weight]}`
+    },
+    {
+      class: 'text-center',
+      value: item.weight === WeightEnum.MEDIUM ? '✅' : '',
+      tooltip: (item.weight === WeightEnum.MEDIUM) && `Peso ${item.weight.toLowerCase()}: ${getComplexity[item.type][item.weight]}`
+    },
+    {
+      class: 'text-center',
+      value: item.weight === WeightEnum.HIGH ? '✅' : '',
+      tooltip: (item.weight === WeightEnum.HIGH) && `Peso ${item.weight.toLowerCase()}: ${getComplexity[item.type][item.weight]}`
+    },
+  ])
 })
-
-const getComplexity = {
-  [ufpEnum.EXTERNAL_INPUTS]: {
-    [WeightEnum.LOW]: 3,
-    [WeightEnum.MEDIUM]: 4,
-    [WeightEnum.HIGH]: 6
-  },
-  [ufpEnum.EXTERNAL_OUTPUTS]: {
-    [WeightEnum.LOW]: 4,
-    [WeightEnum.MEDIUM]: 5,
-    [WeightEnum.HIGH]: 7
-  },
-  [ufpEnum.EXTERNAL_QUERIES]: {
-    [WeightEnum.LOW]: 3,
-    [WeightEnum.MEDIUM]: 4,
-    [WeightEnum.HIGH]: 6
-  },
-  [ufpEnum.INTERNAL_LOGICAL_FILES]: {
-    [WeightEnum.LOW]: 7,
-    [WeightEnum.MEDIUM]: 10,
-    [WeightEnum.HIGH]: 15
-  },
-  [ufpEnum.EXTERNAL_INTERFACE_FILES]: {
-    [WeightEnum.LOW]: 5,
-    [WeightEnum.MEDIUM]: 7,
-    [WeightEnum.HIGH]: 10
-  },
-}
 
 const ufpResult = computed(() => {
   return sampleData.reduce((acc, item) => {
     acc += getComplexity[item.type][item.weight]
     return acc
   }, 0)
+})
+
+const typeResults = computed(() => {
+  return sampleData.reduce(
+    (acc, item) => {
+      const type = item.type
+      acc[type] = acc[type] || { label: type, value: 0 }
+      acc[type].value += getComplexity[type][item.weight]
+      return acc
+    },
+    {} as Record<string, { label: string; value: number }>,
+  )
 })
 </script>
