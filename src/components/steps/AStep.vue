@@ -14,79 +14,11 @@
 <script setup lang="ts">
 import { WeightEnum } from '@/data/enums/weight.enum.ts'
 import GlobalTable from '@/components/GlobalTable.vue'
-import { ufpEnum } from '@/data/enums/ufp.enum.ts'
 import { computed, type ComputedRef } from 'vue'
 import { getComplexity } from '@/data/objets/get_complexity.ts'
 import type { table_data_interface } from '@/data/interfaces'
-import CheckIcon from '@/components/icon/CheckIcon.vue'
+import { a_step_data } from '@/data/sample'
 
-const sampleData = [
-  {
-    value: 'Ingreso al sistema (login)',
-    weight: WeightEnum.MEDIUM,
-    type: ufpEnum.EXTERNAL_INPUTS,
-  },
-  {
-    value: 'Registro de obra',
-    weight: WeightEnum.MEDIUM,
-    type: ufpEnum.EXTERNAL_INPUTS,
-  },
-  {
-    value: 'Registro de mano de obra',
-    weight: WeightEnum.HIGH,
-    type: ufpEnum.EXTERNAL_INPUTS,
-  },
-  {
-    value: 'Registro de material',
-    weight: WeightEnum.LOW,
-    type: ufpEnum.EXTERNAL_INPUTS,
-  },
-  {
-    value: 'Mensaje de error al ingresar al sistema',
-    weight: WeightEnum.LOW,
-    type: ufpEnum.EXTERNAL_OUTPUTS,
-  },
-  {
-    value: 'Reporte de obra',
-    weight: WeightEnum.MEDIUM,
-    type: ufpEnum.EXTERNAL_OUTPUTS,
-  },
-  {
-    value: 'Reporte de seguimiento de obras',
-    weight: WeightEnum.MEDIUM,
-    type: ufpEnum.EXTERNAL_OUTPUTS,
-  },
-  {
-    value: 'Reporte de materiales',
-    weight: WeightEnum.MEDIUM,
-    type: ufpEnum.EXTERNAL_OUTPUTS,
-  },
-  {
-    value: 'Listado de obras en ejecución',
-    weight: WeightEnum.MEDIUM,
-    type: ufpEnum.EXTERNAL_QUERIES,
-  },
-  {
-    value: 'Lista de clientes',
-    weight: WeightEnum.LOW,
-    type: ufpEnum.EXTERNAL_QUERIES,
-  },
-  {
-    value: 'Listado de materiales',
-    weight: WeightEnum.LOW,
-    type: ufpEnum.EXTERNAL_QUERIES,
-  },
-  {
-    value: 'Listado de obras canceladas',
-    weight: WeightEnum.HIGH,
-    type: ufpEnum.EXTERNAL_QUERIES,
-  },
-  {
-    value: 'Listado de items de obra',
-    weight: WeightEnum.MEDIUM,
-    type: ufpEnum.EXTERNAL_QUERIES,
-  },
-]
 const columns = [
   {
     label: 'Nro.',
@@ -111,8 +43,8 @@ const columns = [
   },
 ]
 
-const mapData:ComputedRef = computed<table_data_interface[][]>(() => {
-  return sampleData.map((item, index) => [
+const mapData:ComputedRef<table_data_interface[][]> = computed(() => {
+  return a_step_data.map((item, index) => [
     {
       class: 'font-medium',
       value: index + 1,
@@ -144,14 +76,14 @@ const mapData:ComputedRef = computed<table_data_interface[][]>(() => {
 })
 
 const ufpResult = computed(() => {
-  return sampleData.reduce((acc, item) => {
+  return a_step_data.reduce((acc, item) => {
     acc += getComplexity[item.type][item.weight]
     return acc
   }, 0)
 })
 
 const typeResults = computed(() => {
-  return sampleData.reduce(
+  return a_step_data.reduce(
     (acc, item) => {
       const type = item.type
       acc[type] = acc[type] || { label: type, value: 0 }
