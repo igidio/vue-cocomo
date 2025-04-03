@@ -11,6 +11,7 @@
   <BStep v-if="step_index == 2" />
   <CStep v-if="step_index == 3" />
   <DStep v-if="step_index == 4" />
+  <EStep v-if="step_index == 5" />
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
@@ -24,4 +25,5 @@ import AStep from '@/components/steps/AStep.vue'
 import BStep from '@/components/steps/BStep.vue'
 import CStep from '@/components/steps/CStep.vue'
 import DStep from '@/components/steps/DStep.vue'
+import EStep from '@/components/steps/EStep.vue'
 </script>

@@ -16,7 +16,6 @@
         "
         v-model:selected_value="d_step"
       />
-
       <div class="text-end flex flex-col">
         <div>
           Cálculo de esfuerzo: <span class="font-bold">{{ effort_estimation }} personas/mes</span>
@@ -30,17 +29,18 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script setup lang="ts">
-import { languages_data, software_data } from '../../data/sample'
+import { software_data } from '../../data/sample'
 import GlobalTable from '@/components/GlobalTable.vue'
 import type { header_column_interface, table_data_interface } from '@/data/interfaces'
 import { storeToRefs } from 'pinia'
 import { useProcessStore } from '@/store/process.store.ts'
 import GlobalSelect from '@/components/GlobalSelect.vue'
 
-const { d_step, effort_estimation, time_estimation, team_size_calculation } =
+const { d_step, effort_estimation, time_estimation, team_size_calculation, selected_model } =
   storeToRefs(useProcessStore())
 
 const columns: header_column_interface[] = [

@@ -12,15 +12,15 @@
         :options="
           languages_data.map((language) => ({
             label: language.label,
-            value: language.code_lines,
+            value: language,
           }))
         "
         v-model:selected_value="c_step"
       />
-      <div class="text-end flex flex-col">
+      <div class="text-end flex flex-col" v-if="c_step.code_lines">
         <div>
           Líneas de código del lenguaje seleccionado:
-          <span class="font-bold">{{ c_step }}</span>
+          <span class="font-bold">{{ c_step.code_lines }} LDC [{{  c_step.label }}]</span>
         </div>
         <div>
           Líneas de código: <span class="font-bold">{{ lines_of_code.toFixed(2) }}</span>

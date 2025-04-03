@@ -39,9 +39,9 @@ export const useProcessStore = defineStore('process', () => {
     return ufp_result.value * (0.65 + 0.01 * afp_sum.value)
   })
   // C Step: Conversion of function points to lines of code
-  const c_step = ref(0)
+  const c_step = ref({} as c_step_interfaace)
   const lines_of_code = computed(() => {
-    return afp_result.value * c_step.value
+    return afp_result.value * c_step.value.code_lines
   })
   const kilolines_of_code = computed(() => {
     return lines_of_code.value / 1000
@@ -51,7 +51,33 @@ export const useProcessStore = defineStore('process', () => {
   const effort_estimation = computed(() => Math.ceil(d_step.value['A'] * (kilolines_of_code.value ** d_step.value['B']) ))
   const time_estimation = computed(() => Math.ceil(d_step.value['C'] * (effort_estimation.value ** d_step.value['D'])))
   const team_size_calculation = computed(() => Math.ceil(effort_estimation.value / time_estimation.value || 0))
-
+  // Step E: Development cost estimation
+  const e_step = computed(() => team_size_calculation.value * time_estimation.value * 500)
+  // Create
+  const final_object = computed(() => ({
+    a_ufp: {
+      items: a_step.value,
+      results_by_type: typeResults.value,
+      result: ufp_result.value,
+    },
+    b_afp: {
+      items: b_step.value,
+      sum: afp_sum.value,
+      result: afp_result,
+    },
+    c_ldc: {
+      selected_language: c_step.value.label,
+      lines_of_code: lines_of_code.value,
+      kilolines_of_code: kilolines_of_code.value,
+    },
+    d_cocomo: {
+      model: d_step.value,
+      effort_estimation: effort_estimation.value,
+      time_estimation: time_estimation.value,
+      team_size_calculation: team_size_calculation.value,
+    },
+    e_cost: e_step.value,
+  }))
   return {
     // A Step
     a_step,
@@ -69,6 +95,10 @@ export const useProcessStore = defineStore('process', () => {
     d_step,
     effort_estimation,
     time_estimation,
-    team_size_calculation
+    team_size_calculation,
+    // E Step
+    e_step,
+    // Create
+    final_object
   }
 })

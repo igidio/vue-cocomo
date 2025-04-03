@@ -1,6 +1,6 @@
 export interface c_step_interfaace {
   label: string
-  value: number
+  code_lines: number
 }
 
 export * from './table_data.interface';
