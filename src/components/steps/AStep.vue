@@ -6,7 +6,7 @@
       {{ res.label }} <span class="font-bold">{{ res.value }}</span>
     </div>
     <div>
-      Resultado: <span class="font-bold"> {{ ufpResult }}</span>
+      Resultado: <span class="font-bold"> {{ ufp_result }}</span>
     </div>
   </div>
 </template>
@@ -16,14 +16,14 @@ import { WeightEnum } from '@/data/enums/weight.enum.ts'
 import GlobalTable from '@/components/GlobalTable.vue'
 import { computed, type ComputedRef } from 'vue'
 import { getComplexity } from '@/data/objets/get_complexity.ts'
-import type { table_data_interface } from '@/data/interfaces'
+import type { header_column_interface, table_data_interface } from '@/data/interfaces'
 import { useProcessStore } from '@/store/process.store.ts'
 import { storeToRefs } from 'pinia'
 
-const  { ufpResult, typeResults } = useProcessStore()
+const  { ufp_result, typeResults } = useProcessStore()
 const { a_step } = storeToRefs(useProcessStore())
 
-const columns = [
+const columns: header_column_interface[] = [
   {
     label: 'Nro.',
   },

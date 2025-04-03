@@ -19,8 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import {CircleCheck} from 'lucide-vue-next'
-
 import {
   Table,
   TableBody,
@@ -30,29 +28,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import type { table_data_interface } from '@/data/interfaces'
-import GlobalTooltip from '@/components/GlobalTooltip.vue'
+import type { header_column_interface, table_data_interface } from '@/data/interfaces'
 import TableData from '@/components/TableData.vue'
 
-interface header {
-  label: string
-  class?: string
-}
-
-interface data {
-  id: number
-  value: string
-  type: 'text' | 'number' | 'boolean'
-}
-
-interface TableData {
-  headers: header[]
-  data: data[]
-}
-
-const props = defineProps<{
+defineProps<{
   caption?: string
-  headers: header[]
+  headers: header_column_interface[]
   data:  table_data_interface[][]
 }>()
 </script>
