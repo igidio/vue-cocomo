@@ -1,15 +1,17 @@
 <template>
-  <Select v-model="selectedValue">
-    <SelectTrigger>
-      <SelectValue :placeholder="placeholder" />
+  <Select v-model="selectedValue as AcceptableValue">
+    <SelectTrigger class="w-full">
+      <SelectValue :placeholder="placeholder"  />
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>
         <SelectItem
+          class="w-full"
           v-for="(option, index) in options" :key="index"
-          :value="option as AcceptableValue"
+          :value="option.value as AcceptableValue"
         >
-          {{ option.label }}
+          <SelectItemText>{{ option.label }}</SelectItemText>
+
         </SelectItem>
       </SelectGroup>
     </SelectContent>
@@ -21,9 +23,9 @@ import {
   Select,
   SelectContent,
   SelectGroup,
-  SelectItem,
+  SelectItem, SelectItemText,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from '@/components/ui/select'
 import type { AcceptableValue } from 'reka-ui'
 

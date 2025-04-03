@@ -59,7 +59,6 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
 import { WeightEnum } from '@/data/enums/weight.enum.ts'
 import GlobalTable from '@/components/GlobalTable.vue'
 import { computed, type ComputedRef } from 'vue'
