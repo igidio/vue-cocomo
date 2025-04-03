@@ -55,6 +55,7 @@ export const useProcessStore = defineStore('process', () => {
   const e_step = computed(() => team_size_calculation.value * time_estimation.value * 500)
   // Create
   const final_object = computed(() => ({
+    date: new Date(),
     a_ufp: {
       items: a_step.value,
       results_by_type: typeResults.value,
@@ -63,7 +64,7 @@ export const useProcessStore = defineStore('process', () => {
     b_afp: {
       items: b_step.value,
       sum: afp_sum.value,
-      result: afp_result,
+      result: afp_result.value,
     },
     c_ldc: {
       selected_language: c_step.value.label,

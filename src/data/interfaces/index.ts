@@ -5,3 +5,4 @@ export interface c_step_interfaace {
 
 export * from './table_data.interface';
 export * from './header_column.interface';
+export * from './item.interface.ts';

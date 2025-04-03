@@ -13,10 +13,21 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useProcessStore } from '@/store/process.store.ts'
+import axios from 'axios'
+import { unref } from 'vue'
 
 const { e_step, final_object } = storeToRefs(useProcessStore())
 
-const create = () => {
+const create = async () => {
   console.log(final_object.value)
+  try {
+    console.log(unref(final_object.value))
+    const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/`, {
+      ...unref(final_object.value)
+    })
+    console.log('Response:', response.data)
+  } catch (error) {
+    console.error('Error:', error)
+  }
 }
 </script>
