@@ -39,13 +39,9 @@ export const useProcessStore = defineStore('process', () => {
     return ufp_result.value * (0.65 + 0.01 * afp_sum.value)
   })
   // C Step: Conversion of function points to lines of code
-  const c_step = ref<c_step_interfaace>({
-    value: 0,
-    label: '',
-  })
+  const c_step = ref(0)
   const lines_of_code = computed(() => {
-    console.log('c_step.value', c_step.value)
-    return afp_result.value * c_step.value.value
+    return afp_result.value * c_step.value
   })
   const kilolines_of_code = computed(() => {
     return lines_of_code.value / 1000

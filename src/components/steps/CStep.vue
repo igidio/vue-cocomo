@@ -1,20 +1,35 @@
 <template>
-  <GlobalTable :headers="columns" :data="mapData"></GlobalTable>
-  <GlobalSelect
-    placeholder="Seleccione el lenguaje de programación"
-    :options="
-      languages_data.map((language) => ({
-        label: language.label,
-        value: language.code_lines
-      }))
-    "
-    v-model:selected_value="c_step"
-  />
+  <span class="font-bold text-3xl mb-3">Conversión de PF a LDC</span>
+  <div class="flex flex-row gap-6 w-full">
+    <div class="w-1/2">
+      <GlobalTable :headers="columns" :data="mapData"></GlobalTable>
+    </div>
 
-  <div class="text-end flex flex-col">
-    <div>Lenguaje seleccionado: <span class="font-bold">{{ c_step.label }}, {{ c_step.value }} LDC/PF</span></div>
-    <div>Líneas de código: <span class="font-bold">{{ lines_of_code.toFixed(2) }}</span></div>
-    <div>Kilo líneas de código: <span class="font-bold">{{ kilolines_of_code.toFixed(2) }}</span></div>
+    <div class="flex flex-col grow gap-2">
+      <span>Selecciona el lenguaje de programación</span>
+      <GlobalSelect
+        placeholder="Seleccione el lenguaje de programación"
+        :options="
+          languages_data.map((language) => ({
+            label: language.label,
+            value: language.code_lines,
+          }))
+        "
+        v-model:selected_value="c_step"
+      />
+      <div class="text-end flex flex-col">
+        <div>
+          Líneas de código del lenguaje seleccionado:
+          <span class="font-bold">{{ c_step }}</span>
+        </div>
+        <div>
+          Líneas de código: <span class="font-bold">{{ lines_of_code.toFixed(2) }}</span>
+        </div>
+        <div>
+          Kilo líneas de código: <span class="font-bold">{{ kilolines_of_code.toFixed(2) }}</span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
