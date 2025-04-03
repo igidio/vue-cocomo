@@ -15,7 +15,7 @@
 import { WeightEnum } from '@/data/enums/weight.enum.ts'
 import GlobalTable from '@/components/GlobalTable.vue'
 import { computed, type ComputedRef } from 'vue'
-import { getComplexity } from '@/data/objets/get_complexity.ts'
+import { getComplexity } from '@/data/objects/get_complexity.ts'
 import type { header_column_interface, table_data_interface } from '@/data/interfaces'
 import { useProcessStore } from '@/store/process.store.ts'
 import { storeToRefs } from 'pinia'

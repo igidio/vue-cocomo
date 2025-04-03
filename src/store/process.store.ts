@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { a_step_data, b_step_Data } from '@/data/sample'
-import { getComplexity } from '@/data/objets/get_complexity.ts'
+import { getComplexity } from '@/data/objects/get_complexity.ts'
+import type { c_step_interfaace } from '@/data/interfaces'
 
 export const useProcessStore = defineStore('process', () => {
 
@@ -38,6 +39,18 @@ export const useProcessStore = defineStore('process', () => {
   const afp_result = computed(() => {
     return ufp_result.value * (0.65 + 0.01 * afp_sum.value)
   })
+  // C Step: Conversion of function points to lines of code
+  const c_step = ref<c_step_interfaace>({
+    value: 0,
+    label: '',
+  })
+  const lines_of_code = computed(() => {
+    console.log('c_step.value', c_step.value)
+    return afp_result.value * c_step.value.value
+  })
+  const kilolines_of_code = computed(() => {
+    return lines_of_code.value / 1000
+  })
 
   return {
     // A Step
@@ -47,6 +60,10 @@ export const useProcessStore = defineStore('process', () => {
     // B Step
     b_step,
     afp_sum,
-    afp_result
+    afp_result,
+    // C Step
+    c_step,
+    lines_of_code,
+    kilolines_of_code
   }
 })

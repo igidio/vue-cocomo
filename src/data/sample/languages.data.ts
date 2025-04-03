@@ -1,0 +1,22 @@
+export default [
+  { label: "Java", code_lines: 53 },
+  { label: "C++", code_lines: 50 },
+  { label: "Python", code_lines: 28 },
+  { label: "C#", code_lines: 55 },
+  { label: "Visual Basic", code_lines: 50 },
+  { label: "PHP", code_lines: 67 },
+  { label: "Ruby", code_lines: 21 },
+  { label: "SQL", code_lines: 12 },
+  { label: "COBOL", code_lines: 80 },
+  { label: "Assembly", code_lines: 320 },
+  { label: "TypeScript", code_lines: 50 },
+  { label: "Kotlin", code_lines: 47 },
+  { label: "Swift", code_lines: 45 },
+  { label: "Go", code_lines: 42 },
+  { label: "Rust", code_lines: 40 },
+  { label: "Dart", code_lines: 38 },
+  { label: "Julia", code_lines: 35 },
+  { label: "Elixir", code_lines: 30 },
+  { label: "Scala", code_lines: 28 },
+  { label: "R", code_lines: 25 }
+]
