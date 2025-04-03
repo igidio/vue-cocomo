@@ -147,7 +147,6 @@ const is_open = ref(false)
 const selected = ref(NaN)
 const open_modal = (id: number) => {
   selected.value = id
-  console.log(selected.value)
   is_open.value = true
 }
 </script>

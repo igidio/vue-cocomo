@@ -1,11 +1,7 @@
 <template>
-  <GlobalDrawer trigger="Agregar" title="Agregar elemento" v-model="is_open">
-    <template v-slot:trigger>
-      <Button class="self-center w-32">Agregar</Button>
-    </template>
-
+  <GlobalDrawer trigger="Agregar" title="Modificar elemento" v-model="is_open">
     <template v-slot:default>
-      <form class="space-y-6" @submit="onSubmit">
+      <form class="space-y-6" @submit="submit">
         <div class="flex flex-row gap-4 w-full">
           <div class="flex flex-col w-1/2 gap-4">
             <Label>Característica</Label>
@@ -24,12 +20,17 @@
       <DrawerClose>
         <Button variant="outline"> Cancelar</Button>
       </DrawerClose>
-      <Button :disabled="submit_is_disabled" @click="onSubmit">Agregar </Button>
+      <Button variant="destructive" @click="remove"> Eliminar</Button>
+      <Button :disabled="submit_is_disabled" @click="submit">Agregar </Button>
     </template>
   </GlobalDrawer>
 </template>
 
 <script setup lang="ts">
+import { computed, reactive, watch } from 'vue'
+import { DrawerClose } from '@/components/ui/drawer'
+import { storeToRefs } from 'pinia'
+import { useProcessStore } from '@/store/process.store.ts'
 import { Button } from '@/components/ui/button'
 import GlobalDrawer from '@/components/GlobalDrawer.vue'
 import { Input } from '@/components/ui/input'
@@ -42,29 +43,34 @@ const form = reactive({
   score: 0,
 })
 
-defineProps<{
+const props = defineProps<{
   title: string
   description?: string
+  id: number
 }>()
-
-import { computed, reactive, ref } from 'vue'
-import { DrawerClose } from '@/components/ui/drawer'
-import { storeToRefs } from 'pinia'
-import { useProcessStore } from '@/store/process.store.ts'
 
 const submit_is_disabled = computed(() => {
   return !form.value || !form.score || form.score < 0 || form.score > 5
 })
 
-const is_open = ref(false)
+const is_open = defineModel()
+watch(
+  () => is_open.value,
+  () => {
+    if (!is_open.value) return;
+    form.value = b_step.value[props.id].value;
+    form.score = b_step.value[props.id].score;
+  },
+)
 
-const onSubmit = () => {
-  b_step.value.push({
-    value: form.value,
-    score: form.score,
-  })
-  form.value = ''
-  form.score = 0
+const submit = () => {
+  b_step.value[props.id].value = form.value
+  b_step.value[props.id].score = form.score
+  is_open.value = false
+}
+
+const remove = () => {
+  b_step.value.splice(props.id, 1)
   is_open.value = false
 }
 </script>
