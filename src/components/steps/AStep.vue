@@ -1,54 +1,58 @@
 <template>
   <span class="font-bold text-3xl mb-3">Cálculo de PFSA</span>
-  <GlobalAccordion trigger="Descripción">
-    <div>
-      <p>
-        Los PFSA se calculan identificando las funciones del sistema, como entradas, salidas,
-        consultas, archivos internos y archivos externos.
-      </p>
-      <p>
-        Asigna un pesa a cada función según su complejidad (baja, media, alta) y suma los valores
-        para obtener el PFSA, donde:
-      </p>
-      <ul>
-        <li>
-          <b>Entradas externas (EI):</b> Datos que ingresan al sistema desde el usuario o sistemas
-          externos.
-        </li>
-        <li>
-          <b>Salidas externas (EO):</b> Información que el sistema genera y envía al usuario o
-          sistemas externos.
-        </li>
-        <li>
-          <b>Consultas externas (EQ):</b> Interacciones que permiten al usuario obtener información
-          específica.
-        </li>
-        <li>
-          <b>Ficheros lógicos internos (ILF):</b> Bases de datos o archivos gestionados por el
-          sistema.
-        </li>
-        <li>
-          <b>Ficheros lógicos externos (ELF):</b> Bases de datos o archivos gestionados por sistemas
-          externos pero utilizados por el sistema.
-        </li>
-      </ul>
-      <p>
-        Es importante asignar complejidad, según los criterios como el número de campos o el nivel
-        de interacción. De acuerdo ala complejidad es que se asigna un peso para cada función del
-        sistema.
-      </p>
-    </div>
-  </GlobalAccordion>
 
   <GlobalTable :headers="columns" :data="mapData"></GlobalTable>
-  <div
-    class="text-end flex flex-col bg-gray-100 p-2 rounded-md w-1/2 self-end border border-gray-300 gap-1"
-  >
-    <div v-for="(res, index) in typeResults" :key="index">
-      {{ res.label }} <span class="font-bold">{{ res.value }}</span>
-    </div>
-    <div>
-      Resultado: <span class="font-bold"> {{ ufp_result }}</span>
+
+  <div class="flex flex-row w-full gap-2">
+    <GlobalAccordion trigger="Descripción" class="w-1/2">
+      <article class="prose">
+        <p>
+          Los PFSA se calculan identificando las funciones del sistema, como entradas, salidas,
+          consultas, archivos internos y archivos externos.
+        </p>
+        <p>
+          Asigna un pesa a cada función según su complejidad (baja, media, alta) y suma los valores
+          para obtener el PFSA, donde:
+        </p>
+        <ul>
+          <li>
+            <b>Entradas externas (EI):</b> Datos que ingresan al sistema desde el usuario o sistemas
+            externos.
+          </li>
+          <li>
+            <b>Salidas externas (EO):</b> Información que el sistema genera y envía al usuario o
+            sistemas externos.
+          </li>
+          <li>
+            <b>Consultas externas (EQ):</b> Interacciones que permiten al usuario obtener
+            información específica.
+          </li>
+          <li>
+            <b>Ficheros lógicos internos (ILF):</b> Bases de datos o archivos gestionados por el
+            sistema.
+          </li>
+          <li>
+            <b>Ficheros lógicos externos (ELF):</b> Bases de datos o archivos gestionados por
+            sistemas externos pero utilizados por el sistema.
+          </li>
+        </ul>
+        <p>
+          Es importante asignar complejidad, según los criterios como el número de campos o el nivel
+          de interacción. De acuerdo ala complejidad es que se asigna un peso para cada función del
+          sistema.
+        </p>
+      </article>
+    </GlobalAccordion>
+
+    <div
+      class="text-end flex flex-col bg-gray-50 p-2 rounded-md w-1/2 self-end border border-gray-300 gap-1 self-start"
+    >
+      <div v-for="(res, index) in typeResults" :key="index">
+        {{ res.label }} <span class="font-bold">{{ res.value }}</span>
+      </div>
+      <div>
+        Resultado: <span class="font-bold"> {{ ufp_result }}</span>
+      </div>
     </div>
   </div>
 </template>
