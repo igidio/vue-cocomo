@@ -2,7 +2,7 @@
   <Accordion
     type="single"
     collapsible
-    class="bg-gray-50 p-2 rounded-md border border-gray-300"
+    class="p-2 rounded-md"
   >
     <AccordionItem value="item-1">
       <AccordionTrigger>{{ trigger }}</AccordionTrigger>

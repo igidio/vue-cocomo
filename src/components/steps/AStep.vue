@@ -69,7 +69,7 @@
 <script setup lang="ts">
 import { WeightEnum } from '@/data/enums/weight.enum.ts'
 import GlobalTable from '@/components/GlobalTable.vue'
-import { computed, type ComputedRef, type Ref, ref } from 'vue'
+import { computed, type ComputedRef, ref } from 'vue'
 import { getComplexity } from '@/data/objects/get_complexity.ts'
 import type { header_column_interface, table_data_interface } from '@/data/interfaces'
 import { useProcessStore } from '@/store/process.store.ts'

@@ -92,7 +92,6 @@ const submit_is_disabled = computed(() => {
 const is_open = ref(false)
 
 const onSubmit = () => {
-  console.log(form)
   a_step.value.push({
     value: form.value,
     weight: form.weight,

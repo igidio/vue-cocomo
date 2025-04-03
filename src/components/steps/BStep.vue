@@ -1,5 +1,7 @@
 <template>
+  <span class="font-bold text-3xl mb-3">Cálculo de PFA</span>
   <GlobalTable :headers="columns" :data="mapData"></GlobalTable>
+  <BModalCreate title="Crear elemento"/>
   <div class="text-end flex flex-col">
     <div>Suma total: <span class="font-bold">{{ afp_sum }}</span></div>
     <div>Factores de ajuste: <span class="font-bold">{{ afp_result.toFixed(2) }}</span></div>
@@ -12,6 +14,7 @@ import { computed, type ComputedRef } from 'vue'
 import { useProcessStore } from '@/store/process.store.ts'
 import { storeToRefs } from 'pinia'
 import GlobalTable from '@/components/GlobalTable.vue'
+import BModalCreate from '@/components/modal/BModalCreate.vue'
 
 const { afp_sum, afp_result } = useProcessStore()
 const { b_step } = storeToRefs(useProcessStore())
