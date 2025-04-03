@@ -4,7 +4,8 @@
   <span class="font-bold text-3xl">Cálculo de PFA</span>
 <!--  <AStep/>-->
 <!--  <BStep/>-->
-  <CStep/>
+<!--  <CStep/>-->
+  <DStep/>
 
   <div class="justify-between flex flex-row w-full bg-red-50">
     <Button>Anterior</Button>
@@ -18,4 +19,5 @@ import { Button } from '@/components/ui/button'
 import AStep from '@/components/steps/AStep.vue'
 import BStep from '@/components/steps/BStep.vue'
 import CStep from '@/components/steps/CStep.vue'
+import DStep from '@/components/steps/DStep.vue'
 </script>

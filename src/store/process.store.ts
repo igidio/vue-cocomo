@@ -1,11 +1,10 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { a_step_data, b_step_Data } from '@/data/sample'
+import { a_step_data, b_step_Data, software_data } from '@/data/sample'
 import { getComplexity } from '@/data/objects/get_complexity.ts'
 import type { c_step_interfaace } from '@/data/interfaces'
 
 export const useProcessStore = defineStore('process', () => {
-
   // A Step: UFP
   const a_step = ref(a_step_data);
 
@@ -51,6 +50,11 @@ export const useProcessStore = defineStore('process', () => {
   const kilolines_of_code = computed(() => {
     return lines_of_code.value / 1000
   })
+  // Step D: Application
+  const d_step = ref(software_data['Orgánico'])
+  const effort_estimation = computed(() => d_step.value['A'] * (kilolines_of_code.value ** d_step.value['B']) )
+  const time_estimation = computed(() => d_step.value['C'] * (effort_estimation.value ** d_step.value['D']))
+  const team_size_calculation = computed(() => Math.ceil(effort_estimation.value / time_estimation.value))
 
   return {
     // A Step
@@ -64,6 +68,11 @@ export const useProcessStore = defineStore('process', () => {
     // C Step
     c_step,
     lines_of_code,
-    kilolines_of_code
+    kilolines_of_code,
+    // D Step
+    d_step,
+    effort_estimation,
+    time_estimation,
+    team_size_calculation
   }
 })
