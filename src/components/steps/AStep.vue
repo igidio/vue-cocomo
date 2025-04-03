@@ -1,7 +1,15 @@
 <template>
   <span class="font-bold text-3xl mb-3">Cálculo de PFSA</span>
-
-  <GlobalTable :headers="columns" :data="mapData"></GlobalTable>
+  <AModalModify
+    title="Modificar elemento"
+    v-model="is_open"
+    :id="selected"
+  />
+  <GlobalTable
+    :headers="columns"
+    :data="mapData"
+    :on_click="open_modal"
+  />
   <AModalCreate title="Crear elemento"/>
 
   <div class="flex flex-row w-full gap-2">
@@ -61,13 +69,14 @@
 <script setup lang="ts">
 import { WeightEnum } from '@/data/enums/weight.enum.ts'
 import GlobalTable from '@/components/GlobalTable.vue'
-import { computed, type ComputedRef } from 'vue'
+import { computed, type ComputedRef, type Ref, ref } from 'vue'
 import { getComplexity } from '@/data/objects/get_complexity.ts'
 import type { header_column_interface, table_data_interface } from '@/data/interfaces'
 import { useProcessStore } from '@/store/process.store.ts'
 import { storeToRefs } from 'pinia'
 import GlobalAccordion from '@/components/GlobalAccordion.vue'
 import AModalCreate from '@/components/modal/AModalCreate.vue'
+import AModalModify from '@/components/modal/AModalModify.vue'
 
 const { a_step, ufp_result, typeResults } = storeToRefs(useProcessStore())
 
@@ -132,4 +141,13 @@ const mapData: ComputedRef<table_data_interface[][]> = computed(() => {
     },
   ])
 })
+
+// Modal
+const is_open = ref(false)
+const selected = ref(NaN)
+const open_modal = (id: number) => {
+  selected.value = id
+  console.log(selected.value)
+  is_open.value = true
+}
 </script>

@@ -37,5 +37,7 @@ defineProps<{
   description?: string
 }>()
 
-const is_open = defineModel()
+const is_open = defineModel({
+  type: Boolean
+})
 </script>

@@ -9,7 +9,7 @@
       </TableRow>
     </TableHeader>
     <TableBody>
-      <TableRow v-for="(row, index) in data" :key="index">
+      <TableRow v-for="(row, index) in data" :key="index" class="cursor-pointer" @click="() => on_click && on_click(index)">
         <TableCell class="font-medium" v-for="(data, index) in row" :key="index">
           <TableData :data="data"></TableData>
         </TableCell>
@@ -34,6 +34,7 @@ import TableData from '@/components/TableData.vue'
 defineProps<{
   caption?: string
   headers: header_column_interface[]
-  data:  table_data_interface[][]
+  data: table_data_interface[][]
+  on_click?: (id: number) => void
 }>()
 </script>
