@@ -48,9 +48,9 @@ export const useProcessStore = defineStore('process', () => {
   })
   // Step D: Application
   const d_step = ref(software_data['Orgánico'])
-  const effort_estimation = computed(() => d_step.value['A'] * (kilolines_of_code.value ** d_step.value['B']) )
-  const time_estimation = computed(() => d_step.value['C'] * (effort_estimation.value ** d_step.value['D']))
-  const team_size_calculation = computed(() => Math.ceil(effort_estimation.value / time_estimation.value))
+  const effort_estimation = computed(() => Math.ceil(d_step.value['A'] * (kilolines_of_code.value ** d_step.value['B']) ))
+  const time_estimation = computed(() => Math.ceil(d_step.value['C'] * (effort_estimation.value ** d_step.value['D'])))
+  const team_size_calculation = computed(() => Math.ceil(effort_estimation.value / time_estimation.value || 0))
 
   return {
     // A Step
