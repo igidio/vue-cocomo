@@ -2,6 +2,7 @@
   <span class="font-bold text-3xl mb-3">Cálculo de PFSA</span>
 
   <GlobalTable :headers="columns" :data="mapData"></GlobalTable>
+  <AModalCreate title="Crear elemento"/>
 
   <div class="flex flex-row w-full gap-2">
     <GlobalAccordion trigger="Descripción" class="w-1/2">
@@ -58,6 +59,7 @@
 </template>
 
 <script setup lang="ts">
+import { Button } from '@/components/ui/button'
 import { WeightEnum } from '@/data/enums/weight.enum.ts'
 import GlobalTable from '@/components/GlobalTable.vue'
 import { computed, type ComputedRef } from 'vue'
@@ -66,6 +68,7 @@ import type { header_column_interface, table_data_interface } from '@/data/inter
 import { useProcessStore } from '@/store/process.store.ts'
 import { storeToRefs } from 'pinia'
 import GlobalAccordion from '@/components/GlobalAccordion.vue'
+import AModalCreate from '@/components/modal/AModalCreate.vue'
 
 const { a_step, ufp_result, typeResults } = storeToRefs(useProcessStore())
 
