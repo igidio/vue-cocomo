@@ -1,5 +1,7 @@
 <template>
-  <Stepper>
+  <Stepper
+    v-model="step_index"
+  >
     <StepperItem
       v-for="item in steps"
       :key="item.step"
@@ -32,6 +34,7 @@ import { Stepper, StepperDescription, StepperIndicator, StepperItem, StepperSepa
 
 import {Layers, Layers2, ChartNoAxesGantt, Calculator, DollarSign } from 'lucide-vue-next'
 
+const step_index = defineModel()
 const steps = [{
   step: 1,
   title: 'Calculo de PFSA',

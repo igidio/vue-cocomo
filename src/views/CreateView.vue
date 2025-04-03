@@ -1,18 +1,22 @@
 <template>
-  <GlobalStepper/>
-  <hr/>
-  <span class="font-bold text-3xl">Cálculo de PFA</span>
-<!--  <AStep/>-->
-<!--  <BStep/>-->
-<!--  <CStep/>-->
-  <DStep/>
-
-  <div class="justify-between flex flex-row w-full bg-red-50">
-    <Button>Anterior</Button>
-    <Button>Siguiente</Button>
+  <div class="flex flex-row justify-center">
+    <GlobalStepper v-model="step_index" />
   </div>
+  <div class="justify-between flex flex-row w-full">
+    <Button @click="step_index--" :disabled="step_index <= 1">Anterior</Button>
+    <Button @click="step_index++" :disabled="step_index >= 5">Siguiente</Button>
+  </div>
+  <hr />
+  <AStep v-if="step_index == 1" />
+  <BStep v-if="step_index == 2" />
+  <CStep v-if="step_index == 3" />
+  <DStep v-if="step_index == 4" />
 </template>
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const step_index = ref(1)
+
 import GlobalStepper from '@/components/GlobalStepper.vue'
 import { Button } from '@/components/ui/button'
 

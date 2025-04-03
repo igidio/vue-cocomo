@@ -59,7 +59,7 @@ export const useProcessStore = defineStore('process', () => {
   return {
     // A Step
     a_step,
-    ufpResult: ufp_result,
+    ufp_result,
     typeResults,
     // B Step
     b_step,
