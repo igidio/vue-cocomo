@@ -1,13 +1,30 @@
 <template>
-  <GlobalCard
-    :title="new Date(item.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }) + ' ' + new Date(item.date).toLocaleTimeString('es-ES')"
-  >
-    <div>
-      <div>Elementos del PFSA: <span class="font-semibold">{{ item.a_ufp.items.length }}</span></div>
-      <div>Elementos del PFA: <span class="font-semibold">{{ item.b_afp.items.length }}</span></div>
-      <div>Costo de desarrollo: <span class="font-semibold">{{ item.e_cost }}</span></div>
-    </div>
-  </GlobalCard>
+  <RouterLink :to="{name: 'read', params: { id: item._id }}">
+    <GlobalCard
+      :title="
+        new Date(item.date).toLocaleDateString('es-ES', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }) +
+        ' ' +
+        new Date(item.date).toLocaleTimeString('es-ES')
+      "
+    >
+      <div>
+        <div>
+          Elementos del PFSA: <span class="font-semibold">{{ item.a_ufp.items.length }}</span>
+        </div>
+        <div>
+          Elementos del PFA: <span class="font-semibold">{{ item.b_afp.items.length }}</span>
+        </div>
+        <div>
+          Costo de desarrollo: <span class="font-semibold">{{ item.e_cost }}</span>
+        </div>
+        <span class="text-xs mt-6 inline-block">{{ item._id }}</span>
+      </div>
+    </GlobalCard>
+  </RouterLink>
 </template>
 <script setup lang="ts">
 import GlobalCard from '@/GlobalCard.vue'

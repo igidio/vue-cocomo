@@ -5,8 +5,11 @@ import { getComplexity } from '@/data/objects/get_complexity.ts'
 import type { c_step_interfaace } from '@/data/interfaces'
 
 export const useProcessStore = defineStore('process', () => {
+  const mode = ref('create')
+  const id = ref<string|string[]>('')
   // A Step: UFP
-  const a_step = ref(a_step_data);
+  //const a_step = ref(a_step_data);
+  const a_step = ref([]);
 
   const ufp_result = computed(() => {
     return a_step.value.reduce((acc, item) => {
@@ -28,7 +31,8 @@ export const useProcessStore = defineStore('process', () => {
   })
 
   // B Step: AFP
-  const b_step = ref(b_step_Data)
+  //const b_step = ref(b_step_Data)
+  const b_step = ref([])
   const afp_sum = computed(() => {
     return b_step.value.reduce((acc, item) => {
       acc += item.score
@@ -80,6 +84,8 @@ export const useProcessStore = defineStore('process', () => {
     e_cost: e_step.value,
   }))
   return {
+    mode,
+    id,
     // A Step
     a_step,
     ufp_result,
