@@ -1,5 +1,5 @@
 <template>
-  <header class="p-4 border-b border-b-gray-400 flex flex-row justify-between w-full">
+  <header class="p-4 border-b border-b-gray-400 flex flex-row justify-between w-full sticky top-0 bg-white z-1">
     <router-link to="/">
       <div class="font-bold hover:bg-gray-200 p-1 text-xl rounded-md">VUE COCOMO</div>
     </router-link>
