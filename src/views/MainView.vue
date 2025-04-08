@@ -11,7 +11,6 @@
 import { onMounted, ref } from 'vue'
 import ItemCard from '@/components/ItemCard.vue'
 import { Button } from '@/components/ui/button'
-import { storeToRefs } from 'pinia'
 import { useProcessStore } from '@/store/process.store.ts'
 
 const { database } = useProcessStore()
