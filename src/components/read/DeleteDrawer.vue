@@ -12,7 +12,10 @@
         <DrawerClose>
           <Button variant="outline"> Cancelar</Button>
         </DrawerClose>
-        <Button @click="on_submit" variant="destructive">Eliminar</Button>
+        <Button @click="on_submit" variant="destructive" :disabled="is_loading">
+          <Loader2 class="w-4 h-4 mr-2 animate-spin" v-if="is_loading"/>
+          Eliminar
+        </Button>
       </DrawerFooter>
     </DrawerContent>
   </Drawer>
@@ -30,19 +33,31 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer'
 import { Button } from '@/components/ui/button'
+import { Loader2 } from 'lucide-vue-next'
 import { useProcessStore } from '@/store/process.store.ts'
 import { useRoute, useRouter } from 'vue-router'
+import { toast } from 'vue-sonner'
+import { ref } from 'vue'
 const route = useRoute()
 const router = useRouter()
 
 const { database } = useProcessStore()
+const is_loading = ref(false)
 
 const on_submit = async () => {
   const id = route.params.id as string;
-  await database.delete(id)
-  await router.replace({
-    name: 'home',
+  is_loading.value = true
+  await database.delete(id).then(async () => {
+    await router.replace({
+      name: 'home',
+    })
+    toast('Proyecto eliminado exitosamente', {
+      description: 'El proyecto con el identificador ' + id + ' ha sido eliminado.',
+    })
+  }).finally(() => {
+    is_loading.value = false
   })
+
 }
 
 const is_open = defineModel({
