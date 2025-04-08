@@ -9,19 +9,25 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import axios from 'axios'
 import ItemCard from '@/components/ItemCard.vue'
 import { Button } from '@/components/ui/button'
+import { storeToRefs } from 'pinia'
+import { useProcessStore } from '@/store/process.store.ts'
+
+const { database } = useProcessStore()
 
 const items = ref([])
 
 onMounted(async () => {
-  try {
-    const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/`)
-    console.log('Response:', response.data)
-    items.value = response.data
-  } catch (error) {
-    console.error('Error:', error)
-  }
+
+  const response = await database.readAll();
+  items.value = response
+  // try {
+  //   const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/`)
+  //   console.log('Response:', response.data)
+  //   items.value = response.data
+  // } catch (error) {
+  //   console.error('Error:', error)
+  // }
 })
 </script>

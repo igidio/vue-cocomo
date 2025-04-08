@@ -200,23 +200,16 @@
 </template>
 
 <script setup lang="ts">
-import axios, { type AxiosResponse } from 'axios'
 import type { Item } from '@/data/interfaces'
 import { useRoute } from 'vue-router'
 import { onMounted, ref, type Ref } from 'vue'
-
+import { useProcessStore } from '@/store/process.store.ts'
 const project: Ref<Item> = ref({} as Item)
+const { database } = useProcessStore()
+
 
 onMounted(async () => {
-  try {
-    const response: AxiosResponse<Item> = await axios.get<Item>(
-      `${import.meta.env.VITE_SERVER_URL}/${useRoute().params.id}`,
-    )
-    project.value = response.data
-    console.log('Response:', project.value)
-  } catch (error) {
-    console.error('Error:', error)
-  }
+  project.value = await database.read(useRoute().params.id as string)
 })
 
 const openSection = ref('');

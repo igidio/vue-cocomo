@@ -10,7 +10,7 @@ export interface Item {
 
 export interface AUfp {
   items:           AUfpItem[];
-  results_by_type: ResultsByType;
+  results_by_type: Partial<ResultsByType>;
   result:          number;
 }
 
