@@ -8,6 +8,7 @@ export class DatabaseService implements adapterInterface {
   }
 
   async delete(id: string): Promise<void> {
+    console.log(id)
     await this.database.delete(id)
   }
 

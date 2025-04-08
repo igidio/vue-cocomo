@@ -22,6 +22,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Card } from '@/components/ui/card'
 import { ref } from 'vue'
 
+
 const selected_model = ref("ufp")
 
 defineProps<{
