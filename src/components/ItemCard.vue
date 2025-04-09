@@ -1,17 +1,11 @@
 <template>
   <RouterLink :to="{name: 'read', params: { id: item._id }}">
-    <GlobalCard
-      :title="
-        new Date(item.date).toLocaleDateString('es-ES', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        }) +
-        ' ' +
-        new Date(item.date).toLocaleTimeString('es-ES')
-      "
-    >
+
+    <div class="flex flex-col border border-gray-300 p-4 rounded-lg shadow-xs hover:bg-gray-50 transition-all">
       <div>
+        <div class="font-bold">
+          {{ item.name }}
+        </div>
         <div>
           Elementos del PFSA: <span class="font-semibold">{{ item.a_ufp.items.length }}</span>
         </div>
@@ -23,7 +17,7 @@
         </div>
         <span class="text-xs mt-6 inline-block">{{ item._id }}</span>
       </div>
-    </GlobalCard>
+    </div>
   </RouterLink>
 </template>
 <script setup lang="ts">

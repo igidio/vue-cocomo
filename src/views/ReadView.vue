@@ -1,9 +1,16 @@
 <template>
   <DeleteDrawer v-model="is_open"/>
-  <div class="content-center p-4 bg-white" v-if="project._id">
+  <div class="content-center bg-white" v-if="project._id">
+
+    <div class="flex flex-col mb-4">
+      <div class="flex flex-row mb-4">
+        <span class="font-bold text-3xl inline-block overflow-hidden text-ellipsis">{{ project.name }}</span>
+      </div>
+    </div>
+
     <div class="flex flex-row justify-between border-b pb-4 mb-6">
       <div class="">
-        <h1 class="text-xl font-bold text-gray-800">Detalles del Proyecto</h1>
+        <span class="font-bold text-gray-800">Detalles del Proyecto</span>
         <p class="text-sm text-gray-500">ID: {{ project._id }}</p>
         <p class="text-sm text-gray-500">Fecha: {{ formatDate(project.date.toString()) }}</p>
       </div>
@@ -96,6 +103,9 @@ import { Card } from '@/components/ui/card'
 import { formatDate } from '../data/helpers'
 import DeleteDrawer from '@/components/read/DeleteDrawer.vue'
 import { toast } from 'vue-sonner'
+import GlobalDrawer from '@/components/GlobalDrawer.vue'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
 
 onMounted(async () => {
   try {
