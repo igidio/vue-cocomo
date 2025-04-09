@@ -17,8 +17,12 @@
         "
             v-model:selected_value="d_step"
           />
-          {{ (!effort_estimation && !time_estimation) && 'No hay elementos'  }}
-          <div class="text-end flex flex-col">
+          <IconItem
+            v-if="!effort_estimation && !time_estimation"
+            label="Debes introducir las funciones (PFA/PFSA) para obtener un resultado."
+            :icon="CircleAlert"
+          />
+          <div class="text-end flex flex-col" v-else>
             <div>
               Cálculo de esfuerzo: <span class="font-bold">{{ effort_estimation }} personas/mes</span>
             </div>
@@ -54,6 +58,8 @@ import { storeToRefs } from 'pinia'
 import { useProcessStore } from '@/store/process.store.ts'
 import GlobalSelect from '@/components/GlobalSelect.vue'
 import StepCard from '@/components/steps/StepCard.vue'
+import { CircleAlert } from 'lucide-vue-next'
+import IconItem from '@/components/steps/IconItem.vue'
 
 const { d_step, effort_estimation, time_estimation, team_size_calculation, selected_model } =
   storeToRefs(useProcessStore())

@@ -13,7 +13,7 @@
           <Button variant="outline"> Cancelar</Button>
         </DrawerClose>
         <Button @click="on_submit" variant="destructive" :disabled="is_loading">
-          <Loader2 class="w-4 h-4 mr-2 animate-spin" v-if="is_loading"/>
+          <Loader2 class="w-4 h-4 mr-2 animate-spin" v-if="is_loading" />
           Eliminar
         </Button>
       </DrawerFooter>
@@ -45,22 +45,24 @@ const { database } = useProcessStore()
 const is_loading = ref(false)
 
 const on_submit = async () => {
-  const id = route.params.id as string;
+  const id = route.params.id as string
   is_loading.value = true
-  await database.delete(id).then(async () => {
-    await router.replace({
-      name: 'home',
+  await database
+    .delete(id)
+    .then(async () => {
+      await router.replace({
+        name: 'home',
+      })
+      toast('Proyecto eliminado exitosamente', {
+        description: `El proyecto con el identificador ${id} ha sido eliminado.`,
+      })
     })
-    toast('Proyecto eliminado exitosamente', {
-      description: 'El proyecto con el identificador ' + id + ' ha sido eliminado.',
+    .finally(() => {
+      is_loading.value = false
     })
-  }).finally(() => {
-    is_loading.value = false
-  })
-
 }
 
 const is_open = defineModel({
-  type: Boolean
+  type: Boolean,
 })
 </script>

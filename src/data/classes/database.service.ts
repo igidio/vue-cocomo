@@ -3,8 +3,8 @@ import type { adapterInterface, Item } from '@/data/interfaces'
 export class DatabaseService implements adapterInterface {
   constructor(private readonly database: adapterInterface) {}
 
-  async create(item: Partial<Item>): Promise<void> {
-    await this.database.create(item)
+  async create(item: Partial<Item>): Promise<string> {
+    return await this.database.create(item)
   }
 
   async delete(id: string): Promise<void> {

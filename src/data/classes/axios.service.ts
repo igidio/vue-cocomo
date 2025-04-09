@@ -11,9 +11,9 @@ export class AxiosService implements adapterInterface {
     this.baseUrl = baseUrl
   }
 
-  async create(item: Partial<Item>): Promise<void> {
+  async create(item: Partial<Item>): Promise<string> {
     try {
-      await this.axiosInstance.post(this.baseUrl, item)
+      return (await this.axiosInstance.post(this.baseUrl, item)).data
     } catch (error) {
       console.error('Error creating item:', error)
       throw new Error('Failed to create item')

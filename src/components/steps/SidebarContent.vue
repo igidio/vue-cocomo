@@ -58,7 +58,7 @@
     <div>
       <SubtitleSidebar :label="steps[4].title" :icon="steps[4].icon" />
       <div>
-        Valor de estimación: <span class="font-semibold">{{ +final_object.e_cost ? `+final_object.e_cost ${$}` : 'N/D' }}</span>
+        Valor de estimación: <span class="font-semibold">{{ +final_object.e_cost ? `${final_object.e_cost}$` : 'N/D' }}</span>
       </div>
     </div>
   </div>
