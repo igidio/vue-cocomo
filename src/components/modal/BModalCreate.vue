@@ -39,11 +39,11 @@ const { b_step } = storeToRefs(useProcessStore())
 
 const form = reactive({
   value: '',
-  score: 0,
+  score: 0 as number,
 })
 
 defineProps<{
-  title: string
+  label: string
   description?: string
 }>()
 
@@ -53,7 +53,7 @@ import { storeToRefs } from 'pinia'
 import { useProcessStore } from '@/store/process.store.ts'
 
 const submit_is_disabled = computed(() => {
-  return !form.value || !form.score || form.score < 0 || form.score > 5
+  return !form.value || typeof form.score === typeof 'number' || form.score < 0 || form.score > 5
 })
 
 const is_open = ref(false)

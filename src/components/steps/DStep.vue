@@ -27,6 +27,8 @@
           Nro. de personas: <span class="font-bold">{{ team_size_calculation }} personas</span>
         </div>
       </div>
+
+      {{ selected_model }}
     </div>
   </div>
 

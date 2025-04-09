@@ -1,16 +1,13 @@
 <template>
-  <span class="font-bold text-3xl mb-3">Cálculo de PFSA</span>
-  <AModalModify
-    title="Modificar elemento"
-    v-model="is_open"
-    :id="selected"
-  />
-  <GlobalTable
-    :headers="columns"
-    :data="mapData"
-    :on_click="open_modal"
-  />
-  <AModalCreate title="Crear elemento"/>
+  <div class="flex flex-col gap-2 mb-4">
+    <span class="font-bold text-3xl">Cálculo de PFSA</span>
+    <hr class="my-2">
+    <AModalModify title="Modificar elemento" v-model="is_open" :id="selected" />
+    <GlobalTable :headers="columns" :data="mapData" :on_click="open_modal" />
+      <AModalCreate label="Crear elemento" />
+
+  </div>
+
 
   <div class="flex flex-row w-full gap-2">
     <GlobalAccordion trigger="Descripción" class="w-1/2">
@@ -53,15 +50,22 @@
       </article>
     </GlobalAccordion>
 
-    <div
-      class="text-end flex flex-col bg-gray-50 p-2 rounded-md w-1/2 self-end border border-gray-300 gap-1 self-start"
-    >
-      <div v-for="(res, index) in typeResults" :key="index">
-        {{ res.label }} <span class="font-bold">{{ res.value }}</span>
+    <div class="flex flex-col gap-2 w-1/2">
+      <div
+        class="text-end flex flex-col bg-gray-50 p-2 rounded-md w-1/2 self-end border border-gray-300 gap-1 self-start w-full"
+      >
+        <div v-for="(res, index) in typeResults" :key="index">
+          {{ res.label }} <span class="font-bold">{{ res.value }}</span>
+        </div>
+        <div>
+          Resultado: <span class="font-bold"> {{ ufp_result }}</span>
+        </div>
       </div>
-      <div>
-        Resultado: <span class="font-bold"> {{ ufp_result }}</span>
-      </div>
+      <IconItem
+        v-if="ufp_result === 0"
+        label="Debes introducir las funciones para obtener el resultado."
+        :icon="CircleAlert"
+      />
     </div>
   </div>
 </template>
@@ -77,6 +81,8 @@ import { storeToRefs } from 'pinia'
 import GlobalAccordion from '@/components/GlobalAccordion.vue'
 import AModalCreate from '@/components/modal/AModalCreate.vue'
 import AModalModify from '@/components/modal/AModalModify.vue'
+import { CircleAlert } from 'lucide-vue-next'
+import IconItem from '@/components/steps/IconItem.vue'
 
 const { a_step, ufp_result, typeResults } = storeToRefs(useProcessStore())
 

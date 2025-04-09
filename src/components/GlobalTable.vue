@@ -1,5 +1,6 @@
 <template>
   <Table>
+    <TableCaption v-if="data.length == 0">La tabla está vacía.</TableCaption>
     <TableCaption>{{ caption }}</TableCaption>
     <TableHeader>
       <TableRow>
@@ -14,6 +15,7 @@
           <TableData :data="data"></TableData>
         </TableCell>
       </TableRow>
+
     </TableBody>
   </Table>
 </template>

@@ -14,7 +14,7 @@
         </StepperIndicator>
         <div class="flex flex-col">
           <StepperTitle>
-            {{ item.title }}
+            {{ item.label }}
           </StepperTitle>
           <StepperDescription>
             {{ item.description }}
@@ -31,34 +31,6 @@
 
 <script setup lang="ts">
 import { Stepper, StepperDescription, StepperIndicator, StepperItem, StepperSeparator, StepperTitle, StepperTrigger } from '@/components/ui/stepper'
-
-import {Layers, Layers2, ChartNoAxesGantt, Calculator, DollarSign } from 'lucide-vue-next'
-
+import { steps } from '@/data/sample'
 const step_index = defineModel()
-const steps = [{
-  step: 1,
-  title: 'Calculo de PFSA',
-  description: 'Cálculo de puntos de función sin ajustar',
-  icon: Layers,
-}, {
-  step: 2,
-  title: 'Cálculo de PFA',
-  description: 'Puntos de función ajustados',
-  icon: Layers2,
-}, {
-  step: 3,
-  title: 'Conversión de PF a LDC',
-  description: 'Conversión de puntos de función ajustados a líneas de código',
-  icon: ChartNoAxesGantt,
-}, {
-  step: 4,
-  title: 'Aplicación de COCOMO',
-  description: 'Aplicación del COCOMO',
-  icon: Calculator,
-}, {
-  step: 5,
-  title: 'Costo de desarrollo',
-  description: 'Resultados del cálculo',
-  icon: DollarSign,
-}]
 </script>

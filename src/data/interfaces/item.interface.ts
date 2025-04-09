@@ -1,3 +1,5 @@
+import type { WeightEnum } from '@/data/enums/weight.enum.ts'
+
 export interface Item {
   _id:      string;
   date:     Date;
@@ -16,7 +18,7 @@ export interface AUfp {
 
 export interface AUfpItem {
   value:  string;
-  weight: Weight;
+  weight: Weight|WeightEnum;
   type:   Type;
 }
 

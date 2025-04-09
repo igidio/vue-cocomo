@@ -5,7 +5,7 @@
     </DrawerTrigger>
     <DrawerContent>
       <DrawerHeader>
-        <DrawerTitle>{{ title }}</DrawerTitle>
+        <DrawerTitle>{{ label }}</DrawerTitle>
         <DrawerDescription v-if="description">
           {{ description }}
         </DrawerDescription>
@@ -32,8 +32,7 @@ import {
 } from '@/components/ui/drawer'
 
 defineProps<{
-  trigger: string
-  title: string
+  label: string
   description?: string
 }>()
 

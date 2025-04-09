@@ -1,7 +1,7 @@
 <template>
   <Card>
     <CardHeader>
-      <CardTitle>{{ title }}</CardTitle>
+      <CardTitle v-if="label">{{ label }}</CardTitle>
       <CardDescription v-if="description">{{ description }}</CardDescription>
     </CardHeader>
     <CardContent>
@@ -24,7 +24,7 @@ import {
 } from '@/components/ui/card'
 
 defineProps<{
-  title: string
+  label?: string
   description?: string
 }>()
 </script>

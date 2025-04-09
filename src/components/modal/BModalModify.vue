@@ -44,13 +44,13 @@ const form = reactive({
 })
 
 const props = defineProps<{
-  title: string
+  label: string
   description?: string
   id: number
 }>()
 
 const submit_is_disabled = computed(() => {
-  return !form.value || !form.score || form.score < 0 || form.score > 5
+  return !form.value || typeof form.score === typeof 'number' || form.score < 0 || form.score > 5
 })
 
 const is_open = defineModel()

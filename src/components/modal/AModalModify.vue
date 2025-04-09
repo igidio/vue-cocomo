@@ -77,7 +77,7 @@ const form = reactive({
 })
 
 const props = defineProps<{
-  title: string
+  label: string
   description?: string
   id: number
 }>()

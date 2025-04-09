@@ -1,7 +1,10 @@
 <template>
-  <GlobalDrawer trigger="Agregar" title="Agregar elemento" v-model="is_open">
+  <GlobalDrawer label="Agregar elemento" v-model="is_open">
     <template v-slot:trigger>
-      <Button class="self-center w-32">Agregar</Button>
+        <Button class="self-center w-32" size="sm">
+          <SquarePlus />
+          Agregar
+        </Button>
     </template>
 
     <template v-slot:default>
@@ -52,7 +55,7 @@
       <DrawerClose>
         <Button variant="outline"> Cancelar</Button>
       </DrawerClose>
-      <Button :disabled="submit_is_disabled" @click="onSubmit">Agregar </Button>
+      <Button :disabled="submit_is_disabled" @click="onSubmit">Agregar</Button>
     </template>
   </GlobalDrawer>
 </template>
@@ -64,6 +67,7 @@ import { Input } from '@/components/ui/input'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { WeightEnum } from '@/data/enums/weight.enum.ts'
+import { SquarePlus } from 'lucide-vue-next'
 
 const { a_step } = storeToRefs(useProcessStore())
 
@@ -74,7 +78,7 @@ const form = reactive({
 })
 
 defineProps<{
-  title: string
+  label: string
   description?: string
 }>()
 
@@ -92,10 +96,11 @@ const submit_is_disabled = computed(() => {
 const is_open = ref(false)
 
 const onSubmit = () => {
+  if (!form.type) return
   a_step.value.push({
     value: form.value,
     weight: form.weight,
-    type: form.type!,
+    type: form.type,
   })
   form.value = ''
   form.weight = WeightEnum.LOW

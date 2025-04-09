@@ -9,7 +9,7 @@ const props = defineProps<{
 
 <template>
   <h3
-    data-slot="card-title"
+    data-slot="card-label"
     :class="cn('leading-none font-semibold', props.class)"
   >
     <slot />
