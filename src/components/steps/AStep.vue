@@ -1,88 +1,53 @@
 <template>
-  <div class="flex flex-col gap-2 mb-4">
-    <span class="font-bold text-3xl">Cálculo de PFSA</span>
-    <hr class="my-2">
-    <AModalModify title="Modificar elemento" v-model="is_open" :id="selected" />
-    <GlobalTable :headers="columns" :data="mapData" :on_click="open_modal" />
-      <AModalCreate label="Crear elemento" />
-
-  </div>
-
-
-  <div class="flex flex-row w-full gap-2">
-    <GlobalAccordion trigger="Descripción" class="w-1/2">
-      <article class="prose">
-        <p>
-          Los PFSA se calculan identificando las funciones del sistema, como entradas, salidas,
-          consultas, archivos internos y archivos externos.
-        </p>
-        <p>
-          Asigna un pesa a cada función según su complejidad (baja, media, alta) y suma los valores
-          para obtener el PFSA, donde:
-        </p>
-        <ul>
-          <li>
-            <b>Entradas externas (EI):</b> Datos que ingresan al sistema desde el usuario o sistemas
-            externos.
-          </li>
-          <li>
-            <b>Salidas externas (EO):</b> Información que el sistema genera y envía al usuario o
-            sistemas externos.
-          </li>
-          <li>
-            <b>Consultas externas (EQ):</b> Interacciones que permiten al usuario obtener
-            información específica.
-          </li>
-          <li>
-            <b>Ficheros lógicos internos (ILF):</b> Bases de datos o archivos gestionados por el
-            sistema.
-          </li>
-          <li>
-            <b>Ficheros lógicos externos (ELF):</b> Bases de datos o archivos gestionados por
-            sistemas externos pero utilizados por el sistema.
-          </li>
-        </ul>
-        <p>
-          Es importante asignar complejidad, según los criterios como el número de campos o el nivel
-          de interacción. De acuerdo ala complejidad es que se asigna un peso para cada función del
-          sistema.
-        </p>
-      </article>
-    </GlobalAccordion>
-
-    <div class="flex flex-col gap-2 w-1/2">
-      <div
-        class="text-end flex flex-col bg-gray-50 p-2 rounded-md w-1/2 self-end border border-gray-300 gap-1 self-start w-full"
-      >
-        <div v-for="(res, index) in typeResults" :key="index">
-          {{ res.label }} <span class="font-bold">{{ res.value }}</span>
-        </div>
-        <div>
-          Resultado: <span class="font-bold"> {{ ufp_result }}</span>
+  <StepCard :title="steps[0].title" :content="steps[0].content">
+    <AModalModify label="Modificar elemento" v-model="is_open" :id="selected" />
+    <template #top>
+      <div class="flex flex-col gap-2 mb-4">
+        <GlobalTable :headers="columns" :data="mapData" :on_click="open_modal" />
+        <div class="flex flex-row w-full justify-center">
+          <AModalCreate label="Crear elemento" />
         </div>
       </div>
-      <IconItem
-        v-if="ufp_result === 0"
-        label="Debes introducir las funciones para obtener el resultado."
-        :icon="CircleAlert"
-      />
-    </div>
-  </div>
+    </template>
+    <template #bottom>
+      <div class="flex flex-row w-full gap-2">
+        <div class="w-1/2 flex flex-col gap-2 justify-end">
+          <IconItem
+            v-if="ufp_result === 0"
+            label="Debes introducir las funciones para obtener el resultado."
+            :icon="CircleAlert"
+          />
+        </div>
+        <div
+          class="text-end flex flex-col bg-gray-50 p-2 rounded-md border border-gray-300 gap-1 grow"
+        >
+          <div v-for="(res, index) in typeResults" :key="index">
+            {{ res.label }} <span class="font-bold">{{ res.value }}</span>
+          </div>
+          <div>
+            Resultado: <span class="font-bold"> {{ ufp_result }}</span>
+          </div>
+        </div>
+      </div>
+    </template>
+  </StepCard>
 </template>
 
 <script setup lang="ts">
-import { WeightEnum } from '@/data/enums/weight.enum.ts'
-import GlobalTable from '@/components/GlobalTable.vue'
 import { computed, type ComputedRef, ref } from 'vue'
-import { getComplexity } from '@/data/objects/get_complexity.ts'
-import type { header_column_interface, table_data_interface } from '@/data/interfaces'
-import { useProcessStore } from '@/store/process.store.ts'
 import { storeToRefs } from 'pinia'
-import GlobalAccordion from '@/components/GlobalAccordion.vue'
+import type { header_column_interface, table_data_interface } from '@/data/interfaces'
+
+import GlobalTable from '@/components/GlobalTable.vue'
+import { getComplexity } from '@/data/objects/get_complexity.ts'
+import { useProcessStore } from '@/store/process.store.ts'
+import { WeightEnum } from '@/data/enums/weight.enum.ts'
 import AModalCreate from '@/components/modal/AModalCreate.vue'
 import AModalModify from '@/components/modal/AModalModify.vue'
 import { CircleAlert } from 'lucide-vue-next'
 import IconItem from '@/components/steps/IconItem.vue'
+import StepCard from '@/components/steps/StepCard.vue'
+import { steps } from '../../data/sample'
 
 const { a_step, ufp_result, typeResults } = storeToRefs(useProcessStore())
 

@@ -1,5 +1,5 @@
 <template>
-  <GlobalDrawer trigger="Agregar" title="Modificar elemento" v-model="is_open">
+  <GlobalDrawer trigger="Agregar" label="Modificar elemento" v-model="is_open">
     <template v-slot:default>
       <form class="space-y-6" @submit="submit">
         <div class="flex flex-row gap-4 w-full">
@@ -53,7 +53,9 @@ const submit_is_disabled = computed(() => {
   return !form.value || typeof form.score === typeof 'number' || form.score < 0 || form.score > 5
 })
 
-const is_open = defineModel()
+const is_open = defineModel({
+  type: Boolean
+})
 watch(
   () => is_open.value,
   () => {

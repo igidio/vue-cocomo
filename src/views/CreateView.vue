@@ -18,13 +18,13 @@
         <SidebarContent />
       </GlobalCard>
 
-      <Card class="grow p-4" >
-          <AStep v-if="step_index == 1" />
-          <BStep v-if="step_index == 2" />
-          <CStep v-if="step_index == 3" />
-          <DStep v-if="step_index == 4" />
-          <EStep v-if="step_index == 5" />
-      </Card>
+      <component :is="steps[step_index-1].component" class="grow"></component>
+
+<!--      <AStep v-if="step_index == 1" />-->
+<!--      <BStep v-if="step_index == 2" />-->
+<!--      <CStep v-if="step_index == 3" />-->
+<!--      <DStep v-if="step_index == 4" />-->
+<!--      <EStep v-if="step_index == 5" />-->
     </div>
   </div>
 </template>
@@ -46,4 +46,6 @@ import { SquareArrowRight, SquareArrowLeft } from 'lucide-vue-next'
 import GlobalCard from '@/GlobalCard.vue'
 import SidebarContent from '@/components/steps/SidebarContent.vue'
 import { Card } from '@/components/ui/card'
+import StepCard from '@/components/steps/StepCard.vue'
+import { steps } from '@/data/sample'
 </script>

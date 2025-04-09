@@ -14,7 +14,7 @@
         </StepperIndicator>
         <div class="flex flex-col">
           <StepperTitle>
-            {{ item.label }}
+            {{ item.title }}
           </StepperTitle>
           <StepperDescription>
             {{ item.description }}
@@ -32,5 +32,7 @@
 <script setup lang="ts">
 import { Stepper, StepperDescription, StepperIndicator, StepperItem, StepperSeparator, StepperTitle, StepperTrigger } from '@/components/ui/stepper'
 import { steps } from '@/data/sample'
-const step_index = defineModel()
+const step_index = defineModel({
+  type: Number
+})
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col text-sm">
     <div class="mb-3 flex flex-col gap-2">
-      <SubtitleSidebar :title="steps[0].title" :icon="steps[0].icon" />
+      <SubtitleSidebar :label="steps[0].title" :icon="steps[0].icon" />
       <div>
         Funciones insertadas:
         <span class="font-semibold">{{ final_object.a_ufp.items.length }}</span>
@@ -12,7 +12,7 @@
       <hr />
     </div>
     <div class="mb-3 flex flex-col gap-2">
-      <SubtitleSidebar :title="steps[1].title" :icon="steps[1].icon" />
+      <SubtitleSidebar :label="steps[1].title" :icon="steps[1].icon" />
       <div>
         Funciones insertadas:
         <span class="font-semibold">{{ final_object.b_afp.items.length }}</span>
@@ -26,7 +26,7 @@
       <hr />
     </div>
     <div class="mb-3 flex flex-col gap-2">
-      <SubtitleSidebar :title="steps[2].title" :icon="steps[2].icon" />
+      <SubtitleSidebar :label="steps[2].title" :icon="steps[2].icon" />
       <div>
         Lenguaje seleccionado:
         <span class="font-semibold">{{ final_object.c_ldc.selected_language || 'Ninguno' }}</span>
@@ -38,7 +38,7 @@
       <hr />
     </div>
     <div class="mb-3 flex flex-col gap-2">
-      <SubtitleSidebar :title="steps[3].title" :icon="steps[3].icon" />
+      <SubtitleSidebar :label="steps[3].title" :icon="steps[3].icon" />
       <div>
         Modelo seleccionado:
         <span class="font-semibold">{{ final_object.d_cocomo.selected_model }}</span>
@@ -56,7 +56,7 @@
       <hr />
     </div>
     <div>
-      <SubtitleSidebar :title="steps[4].title" :icon="steps[4].icon" />
+      <SubtitleSidebar :label="steps[4].title" :icon="steps[4].icon" />
       <div>
         Valor de estimación: <span class="font-semibold">{{ +final_object.e_cost ? `+final_object.e_cost ${$}` : 'N/D' }}</span>
       </div>

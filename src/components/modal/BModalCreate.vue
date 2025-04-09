@@ -1,7 +1,8 @@
 <template>
-  <GlobalDrawer trigger="Agregar" title="Agregar elemento" v-model="is_open">
+  <GlobalDrawer trigger="Agregar" label="Agregar elemento" v-model="is_open">
     <template v-slot:trigger>
-      <Button class="self-center w-32">Agregar</Button>
+      <Button class="self-center w-32" size="sm">
+        <SquarePlus />Agregar</Button>
     </template>
 
     <template v-slot:default>
@@ -51,6 +52,7 @@ import { computed, reactive, ref } from 'vue'
 import { DrawerClose } from '@/components/ui/drawer'
 import { storeToRefs } from 'pinia'
 import { useProcessStore } from '@/store/process.store.ts'
+import { SquarePlus } from 'lucide-vue-next'
 
 const submit_is_disabled = computed(() => {
   return !form.value || typeof form.score === typeof 'number' || form.score < 0 || form.score > 5

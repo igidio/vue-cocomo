@@ -1,5 +1,5 @@
 <template>
-  <GlobalDrawer trigger="Agregar" title="Modificar elemento" v-model="is_open">
+  <GlobalDrawer trigger="Agregar" label="Modificar elemento" v-model="is_open">
     <template v-slot:default>
       <form class="space-y-6" @submit="submit">
         <div class="flex flex-row gap-4 w-full">
@@ -61,12 +61,13 @@ import { Input } from '@/components/ui/input'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { WeightEnum } from '@/data/enums/weight.enum.ts'
-import { computed, reactive, ref, watch } from 'vue'
+import { computed, reactive, watch } from 'vue'
 import GlobalSelect from '@/components/GlobalSelect.vue'
 import { ufpEnum } from '@/data/enums/ufp.enum.ts'
 import { DrawerClose } from '@/components/ui/drawer'
 import { storeToRefs } from 'pinia'
 import { useProcessStore } from '@/store/process.store.ts'
+import { Type } from '@/data/interfaces'
 
 const { a_step } = storeToRefs(useProcessStore())
 
@@ -82,13 +83,15 @@ const props = defineProps<{
   id: number
 }>()
 
-const is_open = defineModel()
+const is_open = defineModel({
+  type: Boolean
+})
 watch(
   () => is_open.value,
   () => {
     if (!is_open.value) return;
     form.value = a_step.value[props.id].value;
-    form.weight = a_step.value[props.id].weight;
+    form.weight = a_step.value[props.id].weight as WeightEnum;
     form.type = a_step.value[props.id].type;
   },
 )
@@ -100,7 +103,7 @@ const submit_is_disabled = computed(() => {
 const submit = () => {
   a_step.value[props.id].value = form.value
   a_step.value[props.id].weight = form.weight
-  a_step.value[props.id].type = form.type as ufpEnum
+  a_step.value[props.id].type = form.type as Type
   is_open.value = false
 }
 

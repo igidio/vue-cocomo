@@ -1,20 +1,38 @@
 <template>
-  <span class="font-bold text-3xl mb-3">Cálculo de PFA</span>
-  <GlobalTable
-    :headers="columns"
-    :data="mapData"
-    :on_click="open_modal"
-  />
-  <BModalCreate title="Crear elemento"/>
-  <div class="text-end flex flex-col">
-    <div>Suma total: <span class="font-bold">{{ afp_sum }}</span></div>
-    <div>Factores de ajuste: <span class="font-bold">{{ afp_result.toFixed(2) }}</span></div>
-  </div>
-  <BModalModify
-    title="Modificar elemento"
-    v-model="is_open"
-    :id="selected"
-  />
+  <BModalModify label="Modificar elemento" v-model="is_open" :id="selected" />
+  <StepCard :title="steps[1].title" content="Sadasdsad">
+    <template #top>
+      <div class="flex flex-col gap-2 mb-4">
+        <GlobalTable :headers="columns" :data="mapData" :on_click="open_modal" />
+        <div class="flex flex-row w-full justify-center">
+          <BModalCreate label="Crear elemento" />
+        </div>
+      </div>
+    </template>
+    <template #bottom>
+      <div class="flex flex-row w-full gap-2">
+        <div class="w-1/2 flex flex-col gap-2 justify-end">
+          <IconItem
+            v-if="afp_result === 0"
+            label="Debes introducir las funciones para obtener el resultado."
+            :icon="CircleAlert"
+          />
+        </div>
+
+        <div
+          class="text-end flex flex-col bg-gray-50 p-2 rounded-md border border-gray-300 gap-1 grow"
+        >
+          <div>
+            Suma total: <span class="font-bold">{{ afp_sum }}</span>
+          </div>
+          <div>
+            Factores de ajuste: <span class="font-bold">{{ afp_result.toFixed(2) }}</span>
+          </div>
+        </div>
+      </div>
+
+    </template>
+  </StepCard>
 </template>
 
 <script setup lang="ts">
@@ -25,22 +43,26 @@ import { storeToRefs } from 'pinia'
 import GlobalTable from '@/components/GlobalTable.vue'
 import BModalCreate from '@/components/modal/BModalCreate.vue'
 import BModalModify from '@/components/modal/BModalModify.vue'
+import { steps } from '@/data/sample'
+import StepCard from '@/components/steps/StepCard.vue'
+import { CircleAlert } from 'lucide-vue-next'
+import IconItem from '@/components/steps/IconItem.vue'
 
 const { b_step, afp_sum, afp_result } = storeToRefs(useProcessStore())
 
 const columns: header_column_interface[] = [
   {
-    label: 'Nro.'
+    label: 'Nro.',
   },
   {
     label: 'Características',
   },
   {
-    label: 'Puntuación'
-  }
+    label: 'Puntuación',
+  },
 ]
 
-const mapData:ComputedRef<table_data_interface[][]> = computed(() => {
+const mapData: ComputedRef<table_data_interface[][]> = computed(() => {
   return b_step.value.map((item, index) => [
     {
       class: 'font-medium',
@@ -53,7 +75,7 @@ const mapData:ComputedRef<table_data_interface[][]> = computed(() => {
     {
       class: 'text-center',
       value: item.score,
-    }
+    },
   ])
 })
 
