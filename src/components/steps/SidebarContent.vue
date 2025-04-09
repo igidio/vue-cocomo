@@ -28,7 +28,7 @@
     <div class="mb-3 flex flex-col gap-2">
       <SubtitleSidebar :label="steps[2].title" :icon="steps[2].icon" />
       <div>
-        Lenguaje seleccionado:
+        Lenguaje:
         <span class="font-semibold">{{ final_object.c_ldc.selected_language || 'Ninguno' }}</span>
       </div>
       <div>
@@ -40,15 +40,15 @@
     <div class="mb-3 flex flex-col gap-2">
       <SubtitleSidebar :label="steps[3].title" :icon="steps[3].icon" />
       <div>
-        Modelo seleccionado:
+        Modelo:
         <span class="font-semibold">{{ final_object.d_cocomo.selected_model }}</span>
       </div>
       <div>
-        Cálculo de esfuerzo:
+        Esfuerzo:
         <span class="font-semibold">{{ +final_object.d_cocomo.effort_estimation || 'N/D' }}</span>
       </div>
       <div>
-        Cálculo de tiempo: <span class="font-semibold">{{ +final_object.d_cocomo.time_estimation || 'N/D' }}</span>
+        Tiempo: <span class="font-semibold">{{ +final_object.d_cocomo.time_estimation || 'N/D' }}</span>
       </div>
       <div>
         Nro. de personas: <span class="font-semibold">{{ +final_object.d_cocomo.team_size_calculation || 'N/D' }}</span>

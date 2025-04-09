@@ -1,9 +1,9 @@
 <template>
-  <Card class="grow p-4 transition-all">
+  <Card class="grow p-4 transition-all h-full">
     <div class="flex flex-col justify-between gap-2 mb-4 h-full">
       <div>
         <div class="flex flex-row justify-between items-center">
-          <span class="font-bold text-3xl">{{ title }}</span>
+          <span class="font-bold text-2xl">{{ title }}</span>
           <GlobalDrawer label="Descripción">
             <template #trigger>
               <Button variant="outline">

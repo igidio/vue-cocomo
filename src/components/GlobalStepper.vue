@@ -1,6 +1,7 @@
 <template>
   <Stepper
     v-model="step_index"
+    class="mb-4"
   >
     <StepperItem
       v-for="item in steps"
@@ -16,9 +17,9 @@
           <StepperTitle>
             {{ item.title }}
           </StepperTitle>
-          <StepperDescription>
-            {{ item.description }}
-          </StepperDescription>
+<!--          <StepperDescription>-->
+<!--            {{ item.description }}-->
+<!--          </StepperDescription>-->
         </div>
       </StepperTrigger>
       <StepperSeparator

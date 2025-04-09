@@ -1,10 +1,10 @@
 <template>
-  <BModalModify label="Modificar elemento" v-model="is_open" :id="selected" />
   <StepCard :title="steps[1].title" content="Sadasdsad">
     <template #top>
       <div class="flex flex-col gap-2 mb-4">
         <GlobalTable :headers="columns" :data="mapData" :on_click="open_modal" />
         <div class="flex flex-row w-full justify-center">
+          <BModalModify label="Modificar elemento" v-model="is_open" :id="selected" />
           <BModalCreate label="Crear elemento" />
         </div>
       </div>
@@ -13,8 +13,8 @@
       <div class="flex flex-row w-full gap-2">
         <div class="w-1/2 flex flex-col gap-2 justify-end">
           <IconItem
-            v-if="afp_result === 0"
-            label="Debes introducir las funciones para obtener el resultado."
+            v-if="afp_result === 0 || b_step.length === 0"
+            label="Debes introducir las funciones para obtener un resultado."
             :icon="CircleAlert"
           />
         </div>
@@ -30,7 +30,6 @@
           </div>
         </div>
       </div>
-
     </template>
   </StepCard>
 </template>

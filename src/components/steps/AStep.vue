@@ -14,7 +14,7 @@
         <div class="w-1/2 flex flex-col gap-2 justify-end">
           <IconItem
             v-if="ufp_result === 0"
-            label="Debes introducir las funciones para obtener el resultado."
+            label="Debes introducir las funciones para obtener un resultado."
             :icon="CircleAlert"
           />
         </div>
