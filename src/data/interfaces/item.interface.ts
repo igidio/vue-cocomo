@@ -3,6 +3,7 @@ import type { WeightEnum } from '@/data/enums/weight.enum.ts'
 export interface Item {
   _id:      string;
   date:     Date;
+  name:    string;
   a_ufp:    AUfp;
   b_afp:    BAFP;
   c_ldc:    CLdc;

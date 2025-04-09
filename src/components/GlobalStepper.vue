@@ -1,31 +1,29 @@
 <template>
   <Stepper
     v-model="step_index"
-    class="mb-4"
+    class="flex w-full items-start gap-2 mb-6"
+    orientation="horizontal"
   >
     <StepperItem
-      v-for="item in steps"
+      v-for="(item, index) in steps"
       :key="item.step"
-      class="basis-1/4"
       :step="item.step"
+      class="relative flex w-full flex-col items-center justify-center"
     >
+      <StepperSeparator
+        v-if="item.step !== steps[steps.length - 1].step"
+        class="absolute left-[calc(50%+20px)] right-[calc(-50%+10px)] top-5 block h-0.5 shrink-0 rounded-full bg-muted group-data-[state=completed]:bg-primary"
+      />
       <StepperTrigger>
         <StepperIndicator>
           <component :is="item.icon" class="w-4 h-4" />
         </StepperIndicator>
         <div class="flex flex-col">
-          <StepperTitle>
+          <StepperTitle class="text-sm">
             {{ item.title }}
           </StepperTitle>
-<!--          <StepperDescription>-->
-<!--            {{ item.description }}-->
-<!--          </StepperDescription>-->
         </div>
       </StepperTrigger>
-      <StepperSeparator
-        v-if="item.step !== steps[steps.length - 1].step"
-        class="w-full h-px"
-      />
     </StepperItem>
   </Stepper>
 </template>

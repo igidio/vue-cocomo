@@ -1,4 +1,5 @@
 <template>
+ <ChangeName/>
   <div class="flex flex-col gap-4">
     <GlobalCard class="flex flex-row justify-center">
       <GlobalStepper v-model="step_index" />
@@ -21,17 +22,10 @@
       <div class="flex-1">
         <component :is="steps[step_index - 1].component" class="grow"></component>
       </div>
-      <!--      <AStep v-if="step_index == 1" />-->
-      <!--      <BStep v-if="step_index == 2" />-->
-      <!--      <CStep v-if="step_index == 3" />-->
-      <!--      <DStep v-if="step_index == 4" />-->
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
-const step_index = ref(1)
-
 import GlobalStepper from '@/components/GlobalStepper.vue'
 import { Button } from '@/components/ui/button'
 
@@ -39,4 +33,9 @@ import { SquareArrowRight, SquareArrowLeft } from 'lucide-vue-next'
 import GlobalCard from '@/GlobalCard.vue'
 import SidebarContent from '@/components/steps/SidebarContent.vue'
 import { steps } from '@/data/sample'
+
+import { ref } from 'vue'
+import ChangeName from '@/components/steps/ChangeName.vue'
+const step_index = ref(1)
+
 </script>

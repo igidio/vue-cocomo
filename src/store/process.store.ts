@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { a_step_data, b_step_Data, software_data } from '@/data/sample'
+import { software_data } from '@/data/sample'
 import { getComplexity } from '@/data/objects/get_complexity.ts'
 import type { AUfpItem, c_step_interfaace } from '@/data/interfaces'
 import { AxiosService } from '@/data/classes/axios.service.ts'
@@ -11,7 +11,7 @@ export const useProcessStore = defineStore('process', () => {
   const id = ref<string|string[]>('')
 
   const database = new DatabaseService(new AxiosService(import.meta.env.VITE_SERVER_URL))
-
+  const name = ref('Nuevo proyecto')
   // A Step: UFP
   //const a_step = ref(a_step_data);
   const a_step = ref<AUfpItem[]>([]);
@@ -65,6 +65,7 @@ export const useProcessStore = defineStore('process', () => {
   const e_step = computed(() => team_size_calculation.value * time_estimation.value * 500)
   // Create
   const final_object = computed(() => ({
+    name: name.value,
     date: new Date(),
     a_ufp: {
       items: a_step.value,
@@ -115,6 +116,7 @@ export const useProcessStore = defineStore('process', () => {
     // E Step
     e_step,
     // Create
-    final_object
+    final_object,
+    name
   }
 })

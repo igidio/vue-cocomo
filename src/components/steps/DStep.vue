@@ -61,7 +61,7 @@ import StepCard from '@/components/steps/StepCard.vue'
 import { CircleAlert } from 'lucide-vue-next'
 import IconItem from '@/components/steps/IconItem.vue'
 
-const { d_step, effort_estimation, time_estimation, team_size_calculation, selected_model } =
+const { d_step, effort_estimation, time_estimation, team_size_calculation } =
   storeToRefs(useProcessStore())
 
 const columns: header_column_interface[] = [
