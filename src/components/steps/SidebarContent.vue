@@ -1,7 +1,12 @@
 <template>
   <div class="flex flex-col text-sm">
     <div class="mb-3 flex flex-col gap-2">
-      <SubtitleSidebar :label="steps[0].title" :icon="steps[0].icon" />
+      <SubtitleSidebar
+        :label="steps[0].title"
+        :icon="steps[0].icon"
+        :step="steps[0].step"
+        @click="every_click = false"
+      />
       <div>
         Funciones insertadas:
         <span class="font-semibold">{{ final_object.a_ufp.items.length }}</span>
@@ -12,7 +17,12 @@
       <hr />
     </div>
     <div class="mb-3 flex flex-col gap-2">
-      <SubtitleSidebar :label="steps[1].title" :icon="steps[1].icon" />
+      <SubtitleSidebar
+        :label="steps[1].title"
+        :icon="steps[1].icon"
+        :step="steps[1].step"
+        @click="every_click = false"
+      />
       <div>
         Funciones insertadas:
         <span class="font-semibold">{{ final_object.b_afp.items.length }}</span>
@@ -26,7 +36,7 @@
       <hr />
     </div>
     <div class="mb-3 flex flex-col gap-2">
-      <SubtitleSidebar :label="steps[2].title" :icon="steps[2].icon" />
+      <SubtitleSidebar :label="steps[2].title" :icon="steps[2].icon" :step="steps[2].step" @click="every_click = false" />
       <div>
         Lenguaje:
         <span class="font-semibold">{{ final_object.c_ldc.selected_language || 'Ninguno' }}</span>
@@ -38,7 +48,7 @@
       <hr />
     </div>
     <div class="mb-3 flex flex-col gap-2">
-      <SubtitleSidebar :label="steps[3].title" :icon="steps[3].icon" />
+      <SubtitleSidebar :label="steps[3].title" :icon="steps[3].icon" :step="steps[3].step" @click="every_click = false" />
       <div>
         Modelo:
         <span class="font-semibold">{{ final_object.d_cocomo.selected_model }}</span>
@@ -56,7 +66,7 @@
       <hr />
     </div>
     <div>
-      <SubtitleSidebar :label="steps[4].title" :icon="steps[4].icon" />
+      <SubtitleSidebar :label="steps[4].title" :icon="steps[4].icon" :step="steps[4].step" @click="every_click = false" />
       <div>
         Valor de estimación: <span class="font-semibold">{{ +final_object.e_cost ? `${final_object.e_cost}$` : 'N/D' }}</span>
       </div>
@@ -71,4 +81,5 @@ import SubtitleSidebar from '@/components/steps/SubtitleSidebar.vue'
 import { steps } from '@/data/sample'
 
 const { final_object } = storeToRefs(useProcessStore())
+const every_click = defineModel('every_click', { type: Boolean, required: false })
 </script>

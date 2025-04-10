@@ -32,6 +32,7 @@ export default [
     description: 'Puntos de función ajustados',
     component: BStep,
     icon: Layers2,
+    content: `HOla`
   },
   {
     step: 3,
@@ -39,6 +40,7 @@ export default [
     description: 'Conversión de puntos de función ajustados a líneas de código',
     component: CStep,
     icon: ChartNoAxesGantt,
+    content: `HOla`
   },
   {
     step: 4,
@@ -46,6 +48,7 @@ export default [
     description: 'Aplicación del COCOMO',
     component: DStep,
     icon: Calculator,
+    content: `HOla`
   },
   {
     step: 5,
@@ -53,5 +56,6 @@ export default [
     description: 'Resultados del cálculo',
     component: EStep,
     icon: DollarSign,
+    content: `HOla`
   },
 ]

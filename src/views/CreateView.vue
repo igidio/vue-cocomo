@@ -1,7 +1,7 @@
 <template>
- <ChangeName/>
+  <ChangeName />
   <div class="flex flex-col gap-4">
-    <GlobalCard class="flex flex-row justify-center">
+    <GlobalCard class="flex-row justify-center hidden tablet:flex">
       <GlobalStepper v-model="step_index" />
       <div class="justify-between flex flex-row w-full">
         <Button @click="step_index--" :disabled="step_index <= 1" variant="secondary">
@@ -15,27 +15,26 @@
       </div>
     </GlobalCard>
     <div class="flex flex-row gap-4">
-      <GlobalCard class="w-[280px] h-fit" label="Resumen">
+      <GlobalCard class="w-[280px] h-fit hidden desktop:block" label="Resumen">
         <SidebarContent />
       </GlobalCard>
-
       <div class="flex-1">
-        <component :is="steps[step_index - 1].component" class="grow"></component>
+        <component :is="steps[step_index - 1].component" class="grow" />
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import GlobalStepper from '@/components/GlobalStepper.vue'
-import { Button } from '@/components/ui/button'
-
 import { SquareArrowRight, SquareArrowLeft } from 'lucide-vue-next'
+import { Button } from '@/components/ui/button'
+import { steps } from '@/data/sample'
 import GlobalCard from '@/GlobalCard.vue'
 import SidebarContent from '@/components/steps/SidebarContent.vue'
-import { steps } from '@/data/sample'
+import GlobalStepper from '@/components/GlobalStepper.vue'
 
-import { ref } from 'vue'
 import ChangeName from '@/components/steps/ChangeName.vue'
-const step_index = ref(1)
+import { storeToRefs } from 'pinia'
+import { useProcessStore } from '@/store/process.store.ts'
 
+const { step_index } = storeToRefs(useProcessStore())
 </script>

@@ -3,7 +3,7 @@
     <template #top>
       <div class="flex flex-col gap-2 mb-4">
         <div class="w-full flex flex-row h-32 gap-2">
-          <div class="flex flex-col w-1/2">
+          <div class="flex flex-col w-1/2 gap-2">
             <span>Selecciona el lenguaje de programación</span>
             <GlobalSelect
               placeholder="Seleccione el lenguaje de programación"

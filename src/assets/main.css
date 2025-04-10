@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@import "tw-animate-css";
+
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  /*--breakboint-*: initial;*/
+  --breakpoint-tablet: 40rem;
+  --breakpoint-laptop: 64rem;
+  --breakpoint-desktop: 80rem;
+}
 
 :root {
   --background: oklch(1 0 0);

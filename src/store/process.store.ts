@@ -9,6 +9,7 @@ import { DatabaseService } from '@/data/classes'
 export const useProcessStore = defineStore('process', () => {
   const mode = ref('create')
   const id = ref<string|string[]>('')
+  const step_index = ref(1)
 
   const database = new DatabaseService(new AxiosService(import.meta.env.VITE_SERVER_URL))
   const name = ref('Nuevo proyecto')
@@ -92,6 +93,7 @@ export const useProcessStore = defineStore('process', () => {
     e_cost: e_step.value,
   }))
   return {
+    step_index,
     mode,
     id,
     database,

@@ -5,7 +5,7 @@
     orientation="horizontal"
   >
     <StepperItem
-      v-for="(item, index) in steps"
+      v-for="(item) in steps"
       :key="item.step"
       :step="item.step"
       class="relative flex w-full flex-col items-center justify-center"
@@ -19,8 +19,8 @@
           <component :is="item.icon" class="w-4 h-4" />
         </StepperIndicator>
         <div class="flex flex-col">
-          <StepperTitle class="text-sm">
-            {{ item.title }}
+          <StepperTitle class="text-sm tablet:w-24 desktop:w-full">
+            <p class="tablet:text-wrap desktop:text-nowrap">{{ item.title }}</p>
           </StepperTitle>
         </div>
       </StepperTrigger>
