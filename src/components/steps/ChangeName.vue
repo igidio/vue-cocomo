@@ -17,7 +17,7 @@
         </div>
       </template>
       <template v-slot:footer>
-        <Button variant="outline">Cancelar</Button>
+        <Button variant="outline" @click="is_open = false">Cancelar</Button>
         <Button @click="on_submit" :disabled="is_disabled">Guardar</Button>
       </template>
     </GlobalDrawer>

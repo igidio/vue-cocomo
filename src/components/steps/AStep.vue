@@ -1,10 +1,10 @@
 <template>
   <StepCard :title="steps[0].title" :content="steps[0].content">
-    <AModalModify label="Modificar elemento" v-model="is_open" :id="selected" />
     <template #top>
       <div class="flex flex-col gap-2 mb-4">
         <GlobalTable :headers="columns" :data="mapData" :on_click="open_modal" />
         <div class="flex flex-row w-full justify-center">
+          <AModalModify label="Modificar elemento" v-model="is_open" :id="selected" />
           <AModalCreate label="Crear elemento" />
         </div>
       </div>
