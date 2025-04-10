@@ -19,8 +19,8 @@
           <component :is="item.icon" class="w-4 h-4" />
         </StepperIndicator>
         <div class="flex flex-col">
-          <StepperTitle class="text-sm tablet:w-24 desktop:w-full">
-            <p class="tablet:text-wrap desktop:text-nowrap">{{ item.title }}</p>
+          <StepperTitle class="text-sm tablet:w-24 xl:w-full">
+            <p class="tablet:text-wrap xl:text-nowrap">{{ item.title }}</p>
           </StepperTitle>
         </div>
       </StepperTrigger>

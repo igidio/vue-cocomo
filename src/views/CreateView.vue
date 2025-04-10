@@ -1,7 +1,7 @@
 <template>
   <ChangeName />
   <div class="flex flex-col gap-4">
-    <GlobalCard class="flex-row justify-center hidden tablet:flex">
+    <GlobalCard class="flex-row justify-center hidden md:flex">
       <GlobalStepper v-model="step_index" />
       <div class="justify-between flex flex-row w-full">
         <Button @click="step_index--" :disabled="step_index <= 1" variant="secondary">
@@ -15,7 +15,7 @@
       </div>
     </GlobalCard>
     <div class="flex flex-row gap-4">
-      <GlobalCard class="w-[280px] h-fit hidden desktop:block" label="Resumen">
+      <GlobalCard class="w-[280px] h-fit hidden lg:block" label="Resumen">
         <SidebarContent />
       </GlobalCard>
       <div class="flex-1">
