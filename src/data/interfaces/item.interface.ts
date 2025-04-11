@@ -68,6 +68,7 @@ export interface DCocomo {
   effort_estimation:     number;
   time_estimation:       number;
   team_size_calculation: number;
+  selected_model:       string;
 }
 
 export interface Model {

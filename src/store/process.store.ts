@@ -8,7 +8,7 @@ import { DatabaseService } from '@/data/classes'
 
 export const useProcessStore = defineStore('process', () => {
   const mode = ref('create')
-  const id = ref<string|string[]>('')
+  const id = ref<string|string[]|undefined>(undefined)
   const step_index = ref(1)
 
   const database = new DatabaseService(new AxiosService(import.meta.env.VITE_SERVER_URL))
@@ -57,7 +57,7 @@ export const useProcessStore = defineStore('process', () => {
     return lines_of_code.value / 1000
   })
   // Step D: Application
-  const d_step = ref(software_data['Orgánico'])
+  const d_step = ref(software_data['Orgánico' as keyof  typeof software_data])
   const selected_model =  computed(() => Object.entries(software_data).filter((values) => { return JSON.stringify(values[1]) == JSON.stringify((d_step.value)) })[0][0])
   const effort_estimation = computed(() => Math.ceil(d_step.value['A'] * (kilolines_of_code.value ** d_step.value['B']) ))
   const time_estimation = computed(() => Math.ceil(d_step.value['C'] * (effort_estimation.value ** d_step.value['D'])))

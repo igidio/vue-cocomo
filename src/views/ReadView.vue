@@ -1,10 +1,12 @@
 <template>
   <DeleteDrawer v-model="is_open"/>
-  <div class="content-center bg-white" v-if="project._id">
-
+  <LoaderCircle class="animate-spin self-center m-8" v-if="is_loading" />
+  <div class="content-center bg-white" v-if="project._id && !is_loading">
     <div class="flex flex-col mb-4">
       <div class="flex flex-row mb-4">
-        <span class="font-bold text-3xl inline-block overflow-hidden text-ellipsis">{{ project.name }}</span>
+        <span class="font-bold text-3xl inline-block overflow-hidden text-ellipsis">{{
+          project.name
+        }}</span>
       </div>
     </div>
 
@@ -94,7 +96,7 @@ import UfpSection from '@/components/read/UfpSection.vue'
 import AfpSection from '@/components/read/AfpSection.vue'
 import InfoSection from '@/components/read/InfoSection.vue'
 import CostsSection from '@/components/read/CostsSection.vue'
-import { Trash2, Pen } from 'lucide-vue-next'
+import { Trash2, Pen, LoaderCircle } from 'lucide-vue-next'
 
 const router = useRouter()
 const project: Ref<Item> = ref({} as Item)
@@ -103,20 +105,27 @@ import { Card } from '@/components/ui/card'
 import { formatDate } from '../data/helpers'
 import DeleteDrawer from '@/components/read/DeleteDrawer.vue'
 import { toast } from 'vue-sonner'
-import GlobalDrawer from '@/components/GlobalDrawer.vue'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
+
+const is_loading = ref(true)
 
 onMounted(async () => {
-  try {
-    project.value = await database.read(useRoute().params.id as string)
-
-  } catch (e) {
-    return await router.push({
-      name: 'home',
+  is_loading.value = true
+  await database
+    .read(useRoute().params.id as string)
+    .then((response: Item) => {
+      project.value = response
     })
-  }
-
+    .catch(async () => {
+      toast('Error al obtener el proyecto', {
+        description: `El proyecto con el identificador que has introducido no es válido`,
+      })
+      return await router.push({
+        name: 'home',
+      })
+    })
+    .finally(() => {
+      is_loading.value = false
+    })
 })
 
 const is_open = ref(false)

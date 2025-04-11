@@ -21,6 +21,10 @@
       <h3 class="text-sm font-medium mb-2">Modelo COCOMO</h3>
       <div class="space-y-1">
         <div class="flex justify-between text-sm">
+          <span>Modelo:</span>
+          <span class="font-semibold">{{ project.d_cocomo.selected_model }}</span>
+        </div>
+        <div class="flex justify-between text-sm">
           <span>Esfuerzo:</span>
           <span class="font-semibold">{{ project.d_cocomo.effort_estimation }} persona(s)/mes</span>
         </div>

@@ -34,7 +34,7 @@ export class AxiosService implements adapterInterface {
     await this.axiosInstance.delete(`${this.baseUrl}/${id}`)
   }
 
-  update(id: string, item: Partial<Item>): Promise<void> {
-    return Promise.resolve(undefined)
+  async update(id: string, item: Partial<Item>): Promise<void> {
+    await this.axiosInstance.put(`${this.baseUrl}/${id}`, item)
   }
 }

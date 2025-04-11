@@ -20,7 +20,7 @@
         <SidebarContent />
       </GlobalCard>
       <div class="flex-1">
-        <component :is="steps[step_index - 1].component" class="grow" />
+        <component :is="steps[step_index - 1].component" />
       </div>
     </div>
   </div>

@@ -19,7 +19,7 @@
               label="Debe introducir las funciones para el cálculo de PFA."
               :icon="CircleAlert"
             />
-            <IconItem
+            <IconI
               v-if="!final_object.c_ldc.lines_of_code"
               label="No hay resultado para la conversión de líneas de código."
               :icon="CircleAlert"
@@ -31,8 +31,8 @@
             />
           </div>
         </div>
-        <Button @click="create" :disabled="is_disabled || is_loading"
-          >Guardar en la base de datos</Button
+        <Button @click="to_submit" :disabled="is_disabled || is_loading"
+          >{{ mode === 'edit' ? 'Actualizar' : 'Guardar' }} en la base de datos</Button
         >
       </div>
     </template>
@@ -50,14 +50,29 @@ import StepCard from '@/components/steps/StepCard.vue'
 import { Button } from '@/components/ui/button'
 import { CircleAlert } from 'lucide-vue-next'
 import IconItem from '@/components/steps/IconItem.vue'
-const { e_step, final_object } = storeToRefs(useProcessStore())
+const { e_step, final_object, mode, id } = storeToRefs(useProcessStore())
 const { database } = useProcessStore()
 const router = useRouter()
 
 const is_loading = ref(false)
-const create = async () => {
+const to_submit = async () => {
   is_loading.value = true
-  database
+  if (mode.value === 'edit') {
+    await database
+      .update(id.value as string, final_object.value)
+      .finally(() => (is_loading.value = false))
+      .then(async (res) => {
+        await router.replace({
+          name: 'home',
+        })
+        toast('Proyecto actualizado exitosamente', {
+          description: `El proyecto con el id '${res}' ha sido actualizado.`,
+        })
+      })
+      .catch((error) => alert(error))
+    return
+  }
+  await database
     .create(final_object.value)
     .then(async (res) => {
       await router.replace({
@@ -68,9 +83,7 @@ const create = async () => {
       })
     })
     .catch((error) => alert(error))
-    .finally(() => {
-      is_loading.value = false
-    })
+  is_loading.value = false
 }
 const is_disabled = computed(() => {
   return (

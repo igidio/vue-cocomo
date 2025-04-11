@@ -21,6 +21,8 @@ export class DatabaseService implements adapterInterface {
   }
 
   async update(id: string, item: Partial<Item>): Promise<void> {
+    console.log(id)
+    console.log(item)
     await this.database.update(id, item)
   }
 }
