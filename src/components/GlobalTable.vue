@@ -1,6 +1,6 @@
 <template>
   <Table>
-    <TableCaption v-if="data.length == 0">La tabla está vacía.</TableCaption>
+    <TableCaption v-if="data.length == 0">{{ t("ui.table.empty") }}</TableCaption>
     <TableCaption>{{ caption }}</TableCaption>
     <TableHeader>
       <TableRow>
@@ -32,6 +32,9 @@ import {
 } from '@/components/ui/table'
 import type { header_column_interface, table_data_interface } from '@/data/interfaces'
 import TableData from '@/components/TableData.vue'
+import { useI18n } from 'vue-i18n'
+
+const {t} = useI18n()
 
 defineProps<{
   caption?: string

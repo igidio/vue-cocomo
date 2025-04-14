@@ -20,7 +20,7 @@
         </StepperIndicator>
         <div class="flex flex-col">
           <StepperTitle class="text-sm tablet:w-24 xl:w-full">
-            <p class="tablet:text-wrap xl:text-nowrap">{{ item.title }}</p>
+            <p class="tablet:text-wrap xl:text-nowrap">{{  t(`steps.${item.step}.title`)}}</p>
           </StepperTitle>
         </div>
       </StepperTrigger>
@@ -29,8 +29,11 @@
 </template>
 
 <script setup lang="ts">
-import { Stepper, StepperDescription, StepperIndicator, StepperItem, StepperSeparator, StepperTitle, StepperTrigger } from '@/components/ui/stepper'
+import { Stepper, StepperIndicator, StepperItem, StepperSeparator, StepperTitle, StepperTrigger } from '@/components/ui/stepper'
 import { steps } from '@/data/sample'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const step_index = defineModel({
   type: Number
 })

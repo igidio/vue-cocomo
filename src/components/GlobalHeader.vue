@@ -8,9 +8,9 @@
     <router-link to="/">
       <div class="font-bold hover:bg-gray-200 p-1 text-xl rounded-md">VUE COCOMO</div>
     </router-link>
-<!--    <div class="content-center">-->
-<!--      <LocalIcon />-->
-<!--    </div>-->
+    <div class="content-center" @click="$i18n.locale = 'es'">
+      <LocalIcon />
+    </div>
     <div></div>
   </header>
   <GlobalSheet v-model="is_open" title="Resumen">
@@ -24,6 +24,7 @@ import SidebarContent from '@/components/steps/SidebarContent.vue'
 import MenuIcon from '@/components/icon/MenuIcon.vue'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 const route = useRoute()
 
 const is_open = ref(false)

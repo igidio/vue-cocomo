@@ -1,5 +1,5 @@
 <template>
-  <StepCard :title="steps[0].title" :content="steps[0].content">
+  <StepCard :title="t('steps.1.title')" :content="t('steps.1.content')">
     <template #top>
       <div class="flex flex-col gap-2 mb-4">
         <GlobalTable :headers="columns" :data="mapData" :on_click="open_modal" />
@@ -14,7 +14,7 @@
         <div class="w-1/2 flex flex-col gap-2 justify-end">
           <IconItem
             v-if="ufp_result === 0"
-            label="Debes introducir las funciones para obtener un resultado."
+            :label="t('steps.alerts.must_enter_functions')"
             :icon="CircleAlert"
           />
         </div>
@@ -22,10 +22,10 @@
           class="text-end flex flex-col bg-gray-50 p-2 rounded-md border border-gray-300 gap-1 grow"
         >
           <div v-for="(res, index) in typeResults" :key="index">
-            {{ res.label }} <span class="font-bold">{{ res.value }}</span>
+            {{ t('steps.1.values.' + res.label) }} <span class="font-bold">{{ res.value }}</span>
           </div>
           <div>
-            Resultado: <span class="font-bold"> {{ ufp_result }}</span>
+            {{ t('ui.labels.result') }}: <span class="font-bold"> {{ ufp_result }}</span>
           </div>
         </div>
       </div>
@@ -47,33 +47,34 @@ import AModalModify from '@/components/modal/AModalModify.vue'
 import { CircleAlert } from 'lucide-vue-next'
 import IconItem from '@/components/steps/IconItem.vue'
 import StepCard from '@/components/steps/StepCard.vue'
-import { steps } from '../../data/sample'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const { a_step, ufp_result, typeResults } = storeToRefs(useProcessStore())
 
-const columns: header_column_interface[] = [
+const columns = computed<header_column_interface[]>(() => [
   {
-    label: 'Nro.',
+    label: t("steps.1.table_columns.1"),
   },
   {
-    label: 'Nombre',
+    label: t("steps.1.table_columns.2"),
   },
   {
-    label: 'Tipo',
+    label: t("steps.1.table_columns.3"),
   },
   {
-    label: 'Bajo',
+    label: t("steps.1.table_columns.4"),
     class: 'w-[50px]',
   },
   {
-    label: 'Medio',
+    label: t("steps.1.table_columns.5"),
     class: 'w-[50px]',
   },
   {
-    label: 'Alto',
+    label: t("steps.1.table_columns.6"),
     class: 'w-[50px]',
   },
-]
+])
 
 const mapData: ComputedRef<table_data_interface[][]> = computed(() => {
   return a_step.value.map((item, index) => [
@@ -87,7 +88,7 @@ const mapData: ComputedRef<table_data_interface[][]> = computed(() => {
     },
     {
       class: 'text-left',
-      value: item.type,
+      value: t('steps.1.values.' + item.type),
     },
     {
       class: 'text-center',

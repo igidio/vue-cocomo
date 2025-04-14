@@ -16,7 +16,7 @@
       </div>
     </GlobalCard>
     <div class="flex flex-row gap-4">
-      <GlobalCard class="w-[280px] h-fit hidden lg:block" label="Resumen">
+      <GlobalCard class="w-[280px] h-fit hidden lg:block" :label="t('side_menu.title')">
         <SidebarContent />
       </GlobalCard>
       <div class="flex-1">
@@ -38,5 +38,8 @@ import { storeToRefs } from 'pinia'
 import { useProcessStore } from '@/store/process.store.ts'
 import MobileStepper from '@/components/steps/MobileStepper.vue'
 
+import { useI18n } from 'vue-i18n'
+
 const { step_index } = storeToRefs(useProcessStore())
+const { t } = useI18n()
 </script>

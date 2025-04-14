@@ -8,7 +8,7 @@ export const useProcessStore = defineStore('process', () => {
   const mode = ref('create')
   const id = ref<string|string[]|undefined>(undefined)
   const step_index = ref(1)
-  const name = ref('Nuevo proyecto')
+  const name = ref('Project name')
   // A Step: UFP
   const a_step = ref<AUfpItem[]>([]);
 
