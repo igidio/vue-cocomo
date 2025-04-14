@@ -34,19 +34,20 @@ import {
 } from '@/components/ui/drawer'
 import { Button } from '@/components/ui/button'
 import { Loader2 } from 'lucide-vue-next'
-import { useProcessStore } from '@/store/process.store.ts'
 import { useRoute, useRouter } from 'vue-router'
 import { toast } from 'vue-sonner'
-import { ref } from 'vue'
+import { inject, ref } from 'vue'
+import { DatabaseService } from '@/data/classes'
 const route = useRoute()
 const router = useRouter()
 
-const { database } = useProcessStore()
 const is_loading = ref(false)
+const database = inject<DatabaseService>('database')!
 
 const on_submit = async () => {
   const id = route.params.id as string
   is_loading.value = true
+
   await database
     .delete(id)
     .then(async () => {

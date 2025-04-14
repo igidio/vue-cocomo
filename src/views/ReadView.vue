@@ -88,8 +88,7 @@
 <script setup lang="ts">
 import type { Item } from '@/data/interfaces'
 import { useRoute, useRouter } from 'vue-router'
-import { onMounted, ref, type Ref } from 'vue'
-import { useProcessStore } from '@/store/process.store.ts'
+import { inject, onMounted, ref, type Ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import GlobalTabs from '@/components/GlobalTabs.vue'
 import UfpSection from '@/components/read/UfpSection.vue'
@@ -97,19 +96,20 @@ import AfpSection from '@/components/read/AfpSection.vue'
 import InfoSection from '@/components/read/InfoSection.vue'
 import CostsSection from '@/components/read/CostsSection.vue'
 import { Trash2, Pen, LoaderCircle } from 'lucide-vue-next'
-
-const router = useRouter()
-const project: Ref<Item> = ref({} as Item)
-const { database } = useProcessStore()
 import { Card } from '@/components/ui/card'
-import { formatDate } from '../data/helpers'
+import { formatDate } from '@/data/helpers'
 import DeleteDrawer from '@/components/read/DeleteDrawer.vue'
 import { toast } from 'vue-sonner'
+import { DatabaseService } from '@/data/classes'
 
 const is_loading = ref(true)
+const router = useRouter()
+const project: Ref<Item> = ref({} as Item)
 
 onMounted(async () => {
   is_loading.value = true
+  const database = inject<DatabaseService>('database')!
+
   await database
     .read(useRoute().params.id as string)
     .then((response: Item) => {

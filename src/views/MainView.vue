@@ -17,20 +17,22 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, inject } from 'vue'
 import ItemCard from '@/components/ItemCard.vue'
 import { Button } from '@/components/ui/button'
-import { useProcessStore } from '@/store/process.store.ts'
 import type { Item } from '@/data/interfaces'
 import { LoaderCircle } from 'lucide-vue-next'
+import { DatabaseService } from '@/data/classes'
 
-const { database } = useProcessStore()
 const items = ref<Item[]>([])
 const is_loading = ref(true)
 
 onMounted(async () => {
-    is_loading.value = true;
-    items.value = (items.value = await database.readAll().finally(async () => (is_loading.value = false)))
-  }
-)
+  is_loading.value = true
+  const database = inject<DatabaseService>('database')!
+
+  items.value = items.value = await database
+    .readAll()
+    .finally(async () => (is_loading.value = false))
+})
 </script>

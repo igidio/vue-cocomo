@@ -1,6 +1,5 @@
 import type { AxiosInstance } from 'axios'
 import type { adapterInterface, Item } from '@/data/interfaces'
-import { undefined } from 'zod'
 import axios from 'axios'
 
 export class AxiosService implements adapterInterface {
@@ -13,6 +12,7 @@ export class AxiosService implements adapterInterface {
 
   async create(item: Partial<Item>): Promise<string> {
     try {
+      console.log('Item created successfully:', item)
       return (await this.axiosInstance.post(this.baseUrl, item)).data
     } catch (error) {
       console.error('Error creating item:', error)
@@ -31,6 +31,7 @@ export class AxiosService implements adapterInterface {
   }
 
   async delete(id: string): Promise<void> {
+    console.log("Deleting item with ID:", id)
     await this.axiosInstance.delete(`${this.baseUrl}/${id}`)
   }
 

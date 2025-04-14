@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { inject, onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useProcessStore } from '@/store/process.store.ts'
 import { useRoute } from 'vue-router'
@@ -12,12 +12,14 @@ import type { AUfpItem, BAFPItem, c_step_interfaace, Item } from '@/data/interfa
 import MainStep from '@/components/steps/MainStep.vue'
 import { LoaderCircle } from 'lucide-vue-next'
 import { languages_data, software_data } from '@/data/sample'
+import { DatabaseService } from '@/data/classes'
 const { a_step, b_step, name, step_index, mode, id, c_step, d_step } =
   storeToRefs(useProcessStore())
-const { database } = useProcessStore()
 const is_loading = ref(true)
 
 onMounted(async () => {
+  const database = inject<DatabaseService>('database')!
+
   mode.value = 'edit'
   id.value = useRoute().params.id as string
   step_index.value = 1

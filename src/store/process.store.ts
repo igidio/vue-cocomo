@@ -3,18 +3,13 @@ import { computed, ref } from 'vue'
 import { software_data } from '@/data/sample'
 import { getComplexity } from '@/data/objects/get_complexity.ts'
 import type { AUfpItem, c_step_interfaace } from '@/data/interfaces'
-import { AxiosService } from '@/data/classes/axios.service.ts'
-import { DatabaseService } from '@/data/classes'
 
 export const useProcessStore = defineStore('process', () => {
   const mode = ref('create')
   const id = ref<string|string[]|undefined>(undefined)
   const step_index = ref(1)
-
-  const database = new DatabaseService(new AxiosService(import.meta.env.VITE_SERVER_URL))
   const name = ref('Nuevo proyecto')
   // A Step: UFP
-  //const a_step = ref(a_step_data);
   const a_step = ref<AUfpItem[]>([]);
 
   const ufp_result = computed(() => {
@@ -96,7 +91,6 @@ export const useProcessStore = defineStore('process', () => {
     step_index,
     mode,
     id,
-    database,
     // A Step
     a_step,
     ufp_result,

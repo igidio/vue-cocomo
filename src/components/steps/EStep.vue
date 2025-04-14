@@ -19,7 +19,7 @@
               label="Debe introducir las funciones para el cálculo de PFA."
               :icon="CircleAlert"
             />
-            <IconI
+            <IconItem
               v-if="!final_object.c_ldc.lines_of_code"
               label="No hay resultado para la conversión de líneas de código."
               :icon="CircleAlert"
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
 import { toast } from 'vue-sonner'
 import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
@@ -50,11 +50,12 @@ import StepCard from '@/components/steps/StepCard.vue'
 import { Button } from '@/components/ui/button'
 import { CircleAlert } from 'lucide-vue-next'
 import IconItem from '@/components/steps/IconItem.vue'
+import { DatabaseService } from '@/data/classes'
 const { e_step, final_object, mode, id } = storeToRefs(useProcessStore())
-const { database } = useProcessStore()
 const router = useRouter()
-
 const is_loading = ref(false)
+const database = inject<DatabaseService>('database')!
+
 const to_submit = async () => {
   is_loading.value = true
   if (mode.value === 'edit') {
