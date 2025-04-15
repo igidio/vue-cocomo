@@ -101,6 +101,22 @@ export const translations = {
       3: {
         title: 'Conversión de PF a LDC',
         content: '',
+        table_columns: {
+          1: 'Nro.',
+          2: 'Lenguaje de programación',
+          3: 'Líneas de código por función',
+        },
+        inputs: {
+          language: {
+            label: "Selecciona el lenguaje de programación",
+          }
+        },
+        results: {
+          1: "Líneas de código del lenguaje seleccionado",
+          2: "Lineas de código",
+          3: "Kilolíneas de código",
+          lines_of_code: 'LDC'
+        }
       },
       4: {
         title: 'Aplicación de COCOMO',
@@ -112,6 +128,8 @@ export const translations = {
       },
       alerts: {
         must_enter_functions: 'Debes introducir las funciones para obtener un resultado.',
+        must_enter_other_functions: 'Debes introducir las funciones (PFA/PFSA) para obtener un resultado.',
+
       },
     },
     side_menu: {
@@ -268,8 +286,24 @@ export const translations = {
         },
       },
       3: {
-        title: 'Conversion of PF to LDC',
+        title: 'Conversion of PF to LOC',
         content: '',
+        table_columns: {
+          1: 'No.',
+          2: 'Programming language',
+          3: 'Lines of code per function',
+        },
+        inputs: {
+          language: {
+            label: "Select programming language",
+          }
+        },
+        results: {
+          1: 'Lines of code of the selected language',
+          2: 'Lines of code',
+          3: 'Kilolines of code',
+          lines_of_code: 'LOC'
+        },
       },
       4: {
         title: 'Application of COCOMO',
@@ -281,6 +315,7 @@ export const translations = {
       },
       alerts: {
         must_enter_functions: 'You must enter the functions to get a result.',
+        must_enter_other_functions: 'You must enter the functions (UFP/AFP) to get a result.',
       },
     },
     ui: {
