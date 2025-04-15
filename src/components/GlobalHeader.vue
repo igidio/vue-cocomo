@@ -33,8 +33,10 @@ const is_open = ref(false)
 const toggle_language = () => {
   if (locale.value === 'en') {
     locale.value = 'es'
+    localStorage.setItem('language', locale.value)
     return
   }
   locale.value = 'en'
+  localStorage.setItem('language', locale.value)
 }
 </script>
