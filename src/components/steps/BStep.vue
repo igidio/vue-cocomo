@@ -1,11 +1,11 @@
 <template>
-  <StepCard :title="steps[1].title" content="Sadasdsad">
+  <StepCard :title="t('steps.2.title')" :content="t('steps.2.content')">
     <template #top>
       <div class="flex flex-col gap-2 mb-4">
         <GlobalTable :headers="columns" :data="mapData" :on_click="open_modal" />
         <div class="flex flex-row w-full justify-center">
-          <BModalModify label="Modificar elemento" v-model="is_open" :id="selected" />
-          <BModalCreate label="Crear elemento" />
+          <BModalModify :label="t('steps.2.modals.modify')" v-model="is_open" :id="selected" />
+          <BModalCreate :label="t('steps.1.modals.create')" />
         </div>
       </div>
     </template>
@@ -14,7 +14,7 @@
         <div class="w-1/2 flex flex-col gap-2 justify-end">
           <IconItem
             v-if="afp_result === 0 || b_step.length === 0"
-            label="Debes introducir las funciones para obtener un resultado."
+            :label="t('steps.alerts.must_enter_functions')"
             :icon="CircleAlert"
           />
         </div>
@@ -23,10 +23,10 @@
           class="text-end flex flex-col bg-gray-50 p-2 rounded-md border border-gray-300 gap-1 grow"
         >
           <div>
-            Suma total: <span class="font-bold">{{ afp_sum }}</span>
+            {{ t("steps.2.results.1") }}: <span class="font-bold">{{ afp_sum }}</span>
           </div>
           <div>
-            Factores de ajuste: <span class="font-bold">{{ afp_result.toFixed(2) }}</span>
+            {{ t("steps.2.results.2") }}: <span class="font-bold">{{ afp_result.toFixed(2) }}</span>
           </div>
         </div>
       </div>
@@ -46,20 +46,22 @@ import { steps } from '@/data/sample'
 import StepCard from '@/components/steps/StepCard.vue'
 import { CircleAlert } from 'lucide-vue-next'
 import IconItem from '@/components/steps/IconItem.vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const { b_step, afp_sum, afp_result } = storeToRefs(useProcessStore())
 
-const columns: header_column_interface[] = [
+const columns = computed<header_column_interface[]>(() => [
   {
-    label: 'Nro.',
+    label: t("steps.2.table_columns.1"),
   },
   {
-    label: 'Características',
+    label: t("steps.2.table_columns.2"),
   },
   {
-    label: 'Puntuación',
+    label: t("steps.2.table_columns.3"),
   },
-]
+])
 
 const mapData: ComputedRef<table_data_interface[][]> = computed(() => {
   return b_step.value.map((item, index) => [

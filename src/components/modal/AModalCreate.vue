@@ -1,5 +1,5 @@
 <template>
-  <GlobalDrawer :label="t('steps.1.modals.create.title')" v-model="is_open">
+  <GlobalDrawer :label="label" v-model="is_open">
     <template v-slot:trigger>
       <Button class="self-center w-32" size="sm">
         <SquarePlus />

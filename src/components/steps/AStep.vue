@@ -4,8 +4,8 @@
       <div class="flex flex-col gap-2 mb-4">
         <GlobalTable :headers="columns" :data="mapData" :on_click="open_modal" />
         <div class="flex flex-row w-full justify-center">
-          <AModalModify label="Modificar elemento" v-model="is_open" :id="selected" />
-          <AModalCreate label="Crear elemento" />
+          <AModalModify :label="t('steps.1.modals.modify')" v-model="is_open" :id="selected" />
+          <AModalCreate :label="t('steps.1.modals.create')" />
         </div>
       </div>
     </template>

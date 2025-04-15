@@ -1,16 +1,28 @@
 <template>
-  <GlobalDrawer trigger="Agregar" label="Modificar elemento" v-model="is_open">
+  <GlobalDrawer trigger="Agregar" :label="label" v-model="is_open">
     <template v-slot:default>
       <form class="space-y-6" @submit="submit">
         <div class="flex flex-row gap-4 w-full">
           <div class="flex flex-col w-1/2 gap-4">
-            <Label>Característica</Label>
-            <Input type="text" class="w-full" v-model="form.value" />
+            <Label>{{ t('steps.2.modals.inputs.name.label') }}</Label>
+            <Input
+              type="text"
+              class="w-full"
+              v-model="form.value"
+              :placeholder="t('steps.2.modals.inputs.name.placeholder')"
+            />
           </div>
           <div class="flex flex-col grow gap-4">
-            <Label>Puntuación</Label>
-            <Input type="number" class="w-full" v-model="form.score" min="0" max="5" />
-            <span class="text-sm">La puntuación debe estar entre 0 y 5.</span>
+            <Label>{{ t('steps.2.modals.inputs.score.label') }}</Label>
+            <Input
+              type="number"
+              class="w-full"
+              v-model="form.score"
+              min="0"
+              max="5"
+              :placeholder="t('steps.2.modals.inputs.score.placeholder')"
+            />
+            <span class="text-sm">{{ t('steps.2.modals.inputs.score.description') }}</span>
           </div>
         </div>
       </form>
@@ -18,10 +30,10 @@
 
     <template v-slot:footer>
       <DrawerClose>
-        <Button variant="outline"> Cancelar</Button>
+        <Button variant="outline">{{ t('ui.cancel') }}</Button>
       </DrawerClose>
-      <Button variant="destructive" @click="remove"> Eliminar</Button>
-      <Button :disabled="submit_is_disabled" @click="submit">Agregar </Button>
+      <Button variant="destructive" @click="remove">{{ t('ui.delete') }}</Button>
+      <Button :disabled="submit_is_disabled" @click="submit">{{ t('ui.add') }}</Button>
     </template>
   </GlobalDrawer>
 </template>
@@ -35,8 +47,10 @@ import { Button } from '@/components/ui/button'
 import GlobalDrawer from '@/components/GlobalDrawer.vue'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useI18n } from 'vue-i18n'
 
 const { b_step } = storeToRefs(useProcessStore())
+const { t } = useI18n()
 
 const form = reactive({
   value: '',
@@ -54,14 +68,14 @@ const submit_is_disabled = computed(() => {
 })
 
 const is_open = defineModel({
-  type: Boolean
+  type: Boolean,
 })
 watch(
   () => is_open.value,
   () => {
-    if (!is_open.value) return;
-    form.value = b_step.value[props.id].value;
-    form.score = b_step.value[props.id].score;
+    if (!is_open.value) return
+    form.value = b_step.value[props.id].value
+    form.score = b_step.value[props.id].score
   },
 )
 

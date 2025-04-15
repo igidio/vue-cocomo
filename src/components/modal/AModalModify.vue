@@ -1,18 +1,18 @@
 <template>
-  <GlobalDrawer trigger="Agregar" label="Modificar elemento" v-model="is_open">
+  <GlobalDrawer trigger="Agregar" :label="label" v-model="is_open">
     <template v-slot:default>
       <form class="space-y-6" @submit="submit">
         <div class="flex flex-row gap-4 w-full">
           <div class="flex flex-col w-1/2 gap-4">
-            <Label>Nombre</Label>
-            <Input type="text" class="w-full" v-model="form.value" />
+            <Label>{{t('steps.1.modals.inputs.name.label')}}</Label>
+            <Input type="text" class="w-full" v-model="form.value" :placeholder="t('steps.1.modals.inputs.name.placeholder')" />
 
-            <Label>Tipo</Label>
+            <Label>{{t('steps.1.modals.inputs.type.label')}}</Label>
             <GlobalSelect
-              placeholder="Seleccione el tipo"
+              :placeholder="t('steps.1.modals.inputs.type.placeholder')"
               :options="
                 Object.entries(ufpEnum).map(([key, value]) => ({
-                  label: value,
+                  label: t('steps.1.values.' + value),
                   value: value,
                 }))
               "
@@ -20,7 +20,7 @@
             />
           </div>
           <div class="flex flex-col grow">
-            <Label class="mb-4">Complejidad</Label>
+            <Label class="mb-4">{{t('steps.1.modals.inputs.complexity.label')}}</Label>
             <RadioGroup
               :default-value="WeightEnum.LOW"
               :orientation="'horizontal'"
@@ -28,15 +28,15 @@
             >
               <div class="flex items-center space-x-2">
                 <RadioGroupItem id="option-one" :value="WeightEnum.LOW" />
-                <Label for="option-one">Bajo</Label>
+                <Label for="option-one">{{ t("steps.1.weights.low") }}</Label>
               </div>
               <div class="flex items-center space-x-2">
                 <RadioGroupItem id="option-two" :value="WeightEnum.MEDIUM" />
-                <Label for="option-two">Medio</Label>
+                <Label for="option-two">{{ t("steps.1.weights.medium") }}</Label>
               </div>
               <div class="flex items-center space-x-2">
                 <RadioGroupItem id="option-three" :value="WeightEnum.HIGH" />
-                <Label for="option-three">Alto</Label>
+                <Label for="option-three">{{ t("steps.1.weights.high") }}</Label>
               </div>
             </RadioGroup>
           </div>
@@ -46,10 +46,10 @@
 
     <template v-slot:footer>
       <DrawerClose>
-        <Button variant="outline"> Cancelar</Button>
+        <Button variant="outline">{{ t("ui.cancel") }}</Button>
       </DrawerClose>
-        <Button variant="destructive" @click="remove"> Eliminar</Button>
-      <Button :disabled="submit_is_disabled" @click="submit">Modificar</Button>
+        <Button variant="destructive" @click="remove"> {{ t("ui.delete") }}</Button>
+      <Button :disabled="submit_is_disabled" @click="submit">{{ t("ui.add") }}</Button>
     </template>
   </GlobalDrawer>
 </template>
@@ -68,9 +68,10 @@ import { DrawerClose } from '@/components/ui/drawer'
 import { storeToRefs } from 'pinia'
 import { useProcessStore } from '@/store/process.store.ts'
 import { Type } from '@/data/interfaces'
+import { useI18n } from 'vue-i18n'
 
 const { a_step } = storeToRefs(useProcessStore())
-
+const { t } = useI18n()
 const form = reactive({
   value: '',
   weight: WeightEnum.LOW,

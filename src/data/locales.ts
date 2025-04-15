@@ -53,9 +53,8 @@ export const translations = {
           high: 'Alto',
         },
         modals: {
-          create: {
-            title: 'Agregar elemento',
-          },
+          create: 'Agregar elemento',
+          modify: 'Modificar elemento',
           inputs: {
             name: {
               label: 'Nombre',
@@ -74,6 +73,30 @@ export const translations = {
       2: {
         title: 'Cálculo de PFA',
         content: '',
+        table_columns: {
+          1: 'Nro.',
+          2: 'Nombre',
+          3: 'Puntuación',
+        },
+        results: {
+          1: "Suma total",
+          2: "Factores de ajuste"
+        },
+        modals: {
+          create: 'Agregar elemento',
+          modify: 'Modificar elemento',
+          inputs: {
+            name: {
+              label: 'Nombre',
+              placeholder: 'Nombre de la función',
+            },
+            score: {
+              label: 'Puntuación',
+              placeholder: 'Puntuación de la función',
+              description: 'La puntuación debe ser un número entre 0 y 5.',
+            }
+          }
+        }
       },
       3: {
         title: 'Conversión de PF a LDC',
@@ -119,6 +142,7 @@ export const translations = {
     ui: {
       save: 'Guardar',
       cancel: 'Cancelar',
+      delete: 'Eliminar',
       add: 'Agregar',
       table: {
         empty: 'La tabla está vacía',
@@ -195,9 +219,8 @@ export const translations = {
           high: 'High',
         },
         modals: {
-          create: {
-            title: 'Add item',
-          },
+          create: 'Add item',
+          modify: 'Modify item',
           inputs: {
             name: {
               label: 'Name',
@@ -219,6 +242,30 @@ export const translations = {
       2: {
         title: 'Calculation of PFA',
         content: '',
+        table_columns: {
+          1: 'No.',
+          2: 'Name',
+          3: 'Score',
+        },
+        results: {
+          1: 'Total sum',
+          2: 'Adjustment factors',
+        },
+        modals: {
+          create: 'Add item',
+          modify: 'Modify item',
+          inputs: {
+            name: {
+              label: 'Name',
+              placeholder: 'Function name',
+            },
+            score: {
+              label: 'Score',
+              placeholder: 'Function score',
+              description: 'The score must be a number between 0 and 5.',
+            },
+          },
+        },
       },
       3: {
         title: 'Conversion of PF to LDC',
@@ -239,6 +286,7 @@ export const translations = {
     ui: {
       save: 'Save',
       cancel: 'Cancel',
+      delete: 'Delete',
       add: 'Add',
       table: {
         empty: 'The table is empty',
