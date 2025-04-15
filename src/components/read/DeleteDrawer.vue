@@ -55,8 +55,8 @@ const on_submit = async () => {
       await router.replace({
         name: 'home',
       })
-      toast('Proyecto eliminado exitosamente', {
-        description: `El proyecto con el identificador ${id} ha sido eliminado.`,
+      toast(t('toast.delete.title'), {
+        description: t('toast.delete.description', { id: id }),
       })
     })
     .finally(() => {

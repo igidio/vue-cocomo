@@ -112,14 +112,15 @@ onMounted(async () => {
   is_loading.value = true
   const database = inject<DatabaseService>('database')!
 
-  await database
-    .read(useRoute().params.id as string)
+  await (database
+    .read(useRoute().params.id as string))
     .then((response: Item) => {
       project.value = response
     })
     .catch(async () => {
-      toast('Error al obtener el proyecto', {
-        description: `El proyecto con el identificador que has introducido no es válido`,
+      console.log("asddad")
+      toast(t('toast.error_read.title'), {
+        description: t('toast.error_read.description'),
       })
       return await router.push({
         name: 'home',
@@ -128,6 +129,7 @@ onMounted(async () => {
     .finally(() => {
       is_loading.value = false
     })
+
 })
 
 const is_open = ref(false)

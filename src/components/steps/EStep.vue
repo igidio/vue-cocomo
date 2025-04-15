@@ -64,12 +64,12 @@ const to_submit = async () => {
     await database
       .update(id.value as string, final_object.value)
       .finally(() => (is_loading.value = false))
-      .then(async (res) => {
+      .then(async () => {
         await router.replace({
           name: 'home',
         })
-        toast('Proyecto actualizado exitosamente', {
-          description: `El proyecto con el id '${res}' ha sido actualizado.`,
+        toast(t('toast.update.title'), {
+          description: t('toast.create.description'),
         })
       })
       .catch((error) => alert(error))
@@ -77,12 +77,12 @@ const to_submit = async () => {
   }
   await database
     .create(final_object.value)
-    .then(async (res) => {
+    .then(async () => {
       await router.replace({
         name: 'home',
       })
-      toast('Proyecto creado exitosamente', {
-        description: `El proyecto ha sido creado con el id '${res}'.`,
+      toast(t('toast.create.title'), {
+        description: t('toast.create.description'),
       })
     })
     .catch((error) => alert(error))

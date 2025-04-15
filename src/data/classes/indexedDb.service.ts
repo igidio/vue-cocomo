@@ -68,7 +68,10 @@ class IndexedDbService implements adapterInterface {
       const store = this.transaction('readonly')
       const request = store.get(id)
 
-      request.onsuccess = () => resolve(request.result)
+      request.onsuccess = () => {
+        if (request.result === undefined) reject("Item not found")
+        resolve(request.result)
+      }
       request.onerror = () => reject(request.error)
     })
   }

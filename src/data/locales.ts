@@ -6,6 +6,11 @@ export const translations = {
         span: 'No hay ningún proyecto todavía, prueba {0}.',
         hyper: 'creando una',
       },
+      item: {
+        ufp: "Elementos del PFSA",
+        afp: "Elementos del PFA",
+        cost: "Costo de desarrollo",
+      }
     },
     create: {
       change_name: {
@@ -286,6 +291,24 @@ export const translations = {
         result: 'Resultado',
       },
     },
+    toast: {
+      delete: {
+        title: 'Proyecto eliminado exitosamente',
+        description: `Un proyecto ha sido eliminado.`,
+      },
+      error_read: {
+        title: 'Error al obtener el proyecto',
+        description: `El proyecto que has introducido no es válido`,
+      },
+      create: {
+        title: 'Proyecto creado exitosamente',
+        description: `Un proyecto ha sido creado.`,
+      },
+      update: {
+        title: 'Proyecto actualizado exitosamente',
+        description: `Un proyecto ha sido actualizado.`,
+      },
+    },
   },
   en: {
     main: {
@@ -294,6 +317,11 @@ export const translations = {
         span: 'There are no project yet, try {0}.',
         hyper: 'creating one',
       },
+      item: {
+        ufp: "UFP items",
+        afp: "AFP items",
+        cost: "Development cost",
+      }
     },
     create: {
       change_name: {
@@ -412,7 +440,7 @@ export const translations = {
     },
     steps: {
       1: {
-        title: 'Calculation of PFSA',
+        title: 'Calculation of UFP',
         content: ``,
         table_columns: {
           1: 'No.',
@@ -456,7 +484,7 @@ export const translations = {
         },
       },
       2: {
-        title: 'Calculation of PFA',
+        title: 'Calculation of AFP',
         content: '',
         table_columns: {
           1: 'No.',
@@ -484,7 +512,7 @@ export const translations = {
         },
       },
       3: {
-        title: 'Conversion of PF to LOC',
+        title: 'Conversion of FP to LOC',
         content: '',
         table_columns: {
           1: 'No.',
@@ -518,7 +546,7 @@ export const translations = {
         results: {
           1: {
             label: 'Effort estimation: {0}',
-            additional: 'no person/months | one person/months | {value} person/months',
+            additional: 'no person/month | one person/month | {value} persons/month',
           },
           2: {
             label: 'Time calculation: {0}',
@@ -562,6 +590,24 @@ export const translations = {
       },
       labels: {
         result: 'Result',
+      },
+    },
+    toast: {
+      delete: {
+        title: 'Project deleted successfully',
+        description: `A project has been deleted.`,
+      },
+      error_read: {
+        title: 'Error getting project',
+        description: `The project you entered is not valid.`,
+      },
+      create: {
+        title: 'Project created successfully',
+        description: `A new project has been created.`,
+      },
+      update: {
+        title: 'Project updated successfully',
+        description: `A project has been updated.`,
       },
     },
   },

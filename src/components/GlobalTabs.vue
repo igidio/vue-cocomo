@@ -1,6 +1,6 @@
 <template>
-  <Tabs class="w-full flex flex-row" orientation="vertical" v-model="selected_model" >
-    <TabsList class="grid w-[220px] grid-cols-1 h-fit">
+  <Tabs class="w-full flex flex-col md:flex-row" orientation="vertical" v-model="selected_model" >
+    <TabsList class="grid w-[220px] grid-cols-1 h-fit self-end md:self-auto">
       <TabsTrigger :value="element.value" v-for="(element, index) in list" :key="index">
         {{ element.label }}
       </TabsTrigger>
