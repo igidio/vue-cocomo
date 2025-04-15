@@ -12,9 +12,9 @@
 
     <div class="flex flex-row justify-between border-b pb-4 mb-6">
       <div class="">
-        <span class="font-bold text-gray-800">Detalles del Proyecto</span>
-        <p class="text-sm text-gray-500">ID: {{ project._id }}</p>
-        <p class="text-sm text-gray-500">Fecha: {{ formatDate(project.date.toString()) }}</p>
+        <span class="font-bold text-gray-800">{{ t("read.header.title") }}</span>
+        <p class="text-sm text-gray-500">{{ t("read.header.id") }}: {{ project._id }}</p>
+        <p class="text-sm text-gray-500">{{ t("read.header.date") }}: {{ formatDate(project.date.toString()) }}</p>
       </div>
       <div class="flex flex-col gap-2">
         <RouterLink
@@ -41,15 +41,15 @@
       <Card
         v-for="(resume, index) in [
           {
-            label: 'Puntos de Función',
+            label: t('read.cards.1'),
             value: project.a_ufp.result,
           },
           {
-            label: 'Puntos Ajustados',
+            label: t('read.cards.2'),
             value: project.b_afp.result.toFixed(2),
           },
           {
-            label: 'Costo Total',
+            label: t('read.cards.3'),
             value: project.e_cost,
           },
         ]"
@@ -63,10 +63,10 @@
 
     <GlobalTabs
       :list="[
-        { value: 'ufp', label: 'Puntos de Función (UFP)' },
-        { value: 'afp', label: 'Factores de ajuste (AFP)' },
-        { value: 'info', label: 'Información técnica' },
-        { value: 'costs', label: 'Costos' },
+        { value: 'ufp', label: t('read.tabs.ufp.title') },
+        { value: 'afp', label: t('read.tabs.afp.title') },
+        { value: 'info', label: t('read.tabs.info.title') },
+        { value: 'costs', label: t('read.tabs.costs.title') },
       ]"
     >
       <template #ufp>
@@ -101,10 +101,12 @@ import { formatDate } from '@/data/helpers'
 import DeleteDrawer from '@/components/read/DeleteDrawer.vue'
 import { toast } from 'vue-sonner'
 import { DatabaseService } from '@/data/classes'
+import { useI18n } from 'vue-i18n'
 
 const is_loading = ref(true)
 const router = useRouter()
 const project: Ref<Item> = ref({} as Item)
+const { t } = useI18n()
 
 onMounted(async () => {
   is_loading.value = true

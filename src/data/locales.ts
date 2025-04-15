@@ -164,6 +164,37 @@ export const translations = {
 
       },
     },
+    read: {
+      header: {
+        title: 'Detalles del proyecto',
+        id: 'ID',
+        date: 'Fecha'
+      },
+      cards: {
+        1: "Puntos de Función",
+        2: "Puntos Ajustados",
+        3: "Costo Total"
+      },
+      tabs: {
+        ufp: {
+          title: "Puntos de Función (UFP)",
+          container: {}
+        },
+        afp: {
+          title: "Factores de ajuste (AFP)",
+          container: {}
+        },
+        info: {
+          title: "Información técnica",
+          container: {}
+        },
+        costs: {
+          title: "Costos",
+          container: {}
+        },
+      }
+
+    },
     side_menu: {
       title: 'Resumen',
       1: {
@@ -223,6 +254,37 @@ export const translations = {
         },
       },
     },
+    read: {
+      header: {
+        title: 'Project details',
+        id: 'ID',
+        date: 'Date'
+      },
+      cards: {
+        1: "Function Points",
+        2: "Adjusted Points",
+        3: "Total Cost"
+      },
+      tabs: {
+        ufp: {
+          title: "Function Points (UFP)",
+          container: {}
+        },
+        afp: {
+          title: "Adjustment factors (AFP)",
+          container: {}
+        },
+        info: {
+          title: "Technical information",
+          container: {}
+        },
+        costs: {
+          title: "Costs",
+          container: {}
+        },
+      }
+    },
+
     side_menu: {
       title: 'Summary',
       1: {
