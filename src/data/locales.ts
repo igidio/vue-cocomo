@@ -197,6 +197,7 @@ export const translations = {
       next: 'Siguiente',
       previous: 'Anterior',
       step: 'Paso',
+      none: 'Ninguno',
       table: {
         empty: 'La tabla está vacía',
       },
@@ -392,6 +393,7 @@ export const translations = {
       next: 'Next',
       previous: 'Previous',
       step: 'Step',
+      none: 'None',
       table: {
         empty: 'The table is empty',
       },

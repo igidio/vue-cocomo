@@ -39,7 +39,7 @@
       <SubtitleSidebar :label="t(`steps.3.title`)" :icon="steps[2].icon" :step="steps[2].step" @click="every_click = false" />
       <div>
         {{ t('side_menu.3.subtitle_1') }}:
-        <span class="font-semibold">{{ final_object.c_ldc.selected_language || 'Ninguno' }}</span>
+        <span class="font-semibold">{{ final_object.c_ldc.selected_language || t('ui.none') }}</span>
       </div>
       <div>
         {{ t('side_menu.3.subtitle_2') }}:
@@ -51,7 +51,7 @@
       <SubtitleSidebar :label="t(`steps.4.title`)" :icon="steps[3].icon" :step="steps[3].step" @click="every_click = false" />
       <div>
         {{ t('side_menu.4.subtitle_1') }}:
-        <span class="font-semibold">{{ final_object.d_cocomo.selected_model }}</span>
+        <span class="font-semibold">{{ t('steps.4.models.' + final_object.d_cocomo.selected_model) }}</span>
       </div>
       <div>
         {{ t('side_menu.4.subtitle_2') }}:
