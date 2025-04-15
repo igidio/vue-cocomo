@@ -121,6 +121,29 @@ export const translations = {
       4: {
         title: 'Aplicación de COCOMO',
         content: '',
+        input: {
+          label: 'Selecciona el modelo',
+          placeholder: 'Seleccione',
+        },
+        models: {
+          'Orgánico': 'Orgánico',
+          'Semiacoplado': 'Semiacoplado',
+          'Empotrado': 'Empotrado',
+        },
+        results: {
+          1: {
+            label: 'Esfuerzo estimado: {0}',
+            additional: 'no personas/mes | una persona/mes | {value} personas/mes',
+          },
+          2: {
+            label: 'Cálculo de tiempo: {0}',
+            additional: 'un mes | {value} meses',
+          },
+          3: {
+            label: 'Tamaño del equipo: {0}',
+            additional: 'una persona | {value} personas',
+          }
+        }
       },
       5: {
         title: 'Costo de desarrollo',
@@ -308,6 +331,29 @@ export const translations = {
       4: {
         title: 'Application of COCOMO',
         content: '',
+        input: {
+          label: 'Select model',
+          placeholder: 'Select',
+        },
+        models: {
+          'Orgánico': 'Organic',
+          'Semiacoplado': 'Semi-detached',
+          'Empotrado': 'Embedded',
+        },
+        results: {
+          1: {
+            label: 'Effort estimation: {0}',
+            additional: 'no person/months | one person/months | {value} person/months',
+          },
+          2: {
+            label: 'Time calculation: {0}',
+            additional: 'one month | {value} months',
+          },
+          3: {
+            label: 'Team size: {0}',
+            additional: 'one person | {value} persons',
+          },
+        },
       },
       5: {
         title: 'Development cost',
