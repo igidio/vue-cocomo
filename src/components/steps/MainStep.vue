@@ -7,10 +7,10 @@
       <div class="justify-between flex flex-row w-full">
         <Button @click="step_index--" :disabled="step_index <= 1" variant="secondary">
           <SquareArrowLeft />
-          Anterior
+          {{ t('ui.previous') }}
         </Button>
-        <Button @click="step_index++" :disabled="step_index >= 5" variant="secondary"
-        >Siguiente
+        <Button @click="step_index++" :disabled="step_index >= 5" variant="secondary">
+          {{ t('ui.next') }}
           <SquareArrowRight />
         </Button>
       </div>

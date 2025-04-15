@@ -1,3 +1,16 @@
+<template>
+  <StepperRoot
+    v-slot="slotProps"
+    :class="cn(
+      'flex gap-2',
+      props.class,
+    )"
+    v-bind="forwarded"
+  >
+    <slot v-bind="slotProps" />
+  </StepperRoot>
+</template>
+
 <script lang="ts" setup>
 import type { StepperRootEmits, StepperRootProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
@@ -16,16 +29,3 @@ const delegatedProps = computed(() => {
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
-
-<template>
-  <StepperRoot
-    v-slot="slotProps"
-    :class="cn(
-      'flex gap-2',
-      props.class,
-    )"
-    v-bind="forwarded"
-  >
-    <slot v-bind="slotProps" />
-  </StepperRoot>
-</template>

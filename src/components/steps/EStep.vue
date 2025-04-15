@@ -1,5 +1,5 @@
 <template>
-  <StepCard :title="steps[4].title" :content="steps[3].content">
+  <StepCard :title="t('steps.5.title')" :content="t('steps.5.title')">
     <template #top>
       <div
         class="flex flex-col justify-items-center content-center gap-4 justify-center text-center"
@@ -11,29 +11,29 @@
           <div class="flex flex-col gap-1" v-else>
             <IconItem
               v-if="final_object.a_ufp.items.length === 0"
-              label="Debe introducir las funciones para el cálculo de PFSA."
+              :label="t('steps.5.alerts.must_enter_ufp')"
               :icon="CircleAlert"
             />
             <IconItem
               v-if="final_object.b_afp.items.length === 0"
-              label="Debe introducir las funciones para el cálculo de PFA."
+              :label="t('steps.5.alerts.must_enter_afp')"
               :icon="CircleAlert"
             />
             <IconItem
               v-if="!final_object.c_ldc.lines_of_code"
-              label="No hay resultado para la conversión de líneas de código."
+              :label="t('steps.5.alerts.loc_no_result')"
               :icon="CircleAlert"
             />
             <IconItem
               v-if="!final_object.d_cocomo.team_size_calculation"
-              label="No hay valor para la aplicación de COCOMO."
+              :label="t('steps.5.alerts.cocomo_no_result')"
               :icon="CircleAlert"
             />
           </div>
         </div>
-        <Button @click="to_submit" :disabled="is_disabled || is_loading"
-          >{{ mode === 'edit' ? 'Actualizar' : 'Guardar' }} en la base de datos</Button
-        >
+        <Button @click="to_submit" :disabled="is_disabled || is_loading">
+          {{ mode === 'edit' ? t('steps.5.update') : t('steps.5.save') }}
+        </Button>
       </div>
     </template>
   </StepCard>
@@ -45,16 +45,18 @@ import { toast } from 'vue-sonner'
 import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useProcessStore } from '@/store/process.store.ts'
-import { steps } from '@/data/sample'
 import StepCard from '@/components/steps/StepCard.vue'
 import { Button } from '@/components/ui/button'
 import { CircleAlert } from 'lucide-vue-next'
 import IconItem from '@/components/steps/IconItem.vue'
 import { DatabaseService } from '@/data/classes'
+import { useI18n } from 'vue-i18n'
+
 const { e_step, final_object, mode, id } = storeToRefs(useProcessStore())
 const router = useRouter()
 const is_loading = ref(false)
 const database = inject<DatabaseService>('database')!
+const { t } = useI18n()
 
 const to_submit = async () => {
   is_loading.value = true

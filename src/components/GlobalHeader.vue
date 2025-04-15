@@ -11,9 +11,8 @@
     <div class="content-center" @click="$i18n.locale = 'es'">
       <LocalIcon />
     </div>
-    <div></div>
   </header>
-  <GlobalSheet v-model="is_open" title="Resumen">
+  <GlobalSheet v-model="is_open" :title="t('side_menu.title')">
     <SidebarContent v-model:every_click="is_open" />
   </GlobalSheet>
 </template>
@@ -25,6 +24,8 @@ import MenuIcon from '@/components/icon/MenuIcon.vue'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+
+const {t} = useI18n()
 const route = useRoute()
 
 const is_open = ref(false)

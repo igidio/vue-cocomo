@@ -148,6 +148,15 @@ export const translations = {
       5: {
         title: 'Costo de desarrollo',
         content: '',
+        save: 'Guardar en la base de datos',
+        update: 'Modificar en la base de datos',
+        alerts: {
+          must_enter_ufp: 'Debe introducir las funciones para el cálculo de PFSA.',
+          must_enter_afp: 'Debe introducir las funciones para el cálculo de PFA.',
+          loc_no_result: 'No hay resultado para la conversión de líneas de código.',
+          cocomo_no_result: 'No hay valor para la aplicación de COCOMO.',
+
+        }
       },
       alerts: {
         must_enter_functions: 'Debes introducir las funciones para obtener un resultado.',
@@ -185,6 +194,9 @@ export const translations = {
       cancel: 'Cancelar',
       delete: 'Eliminar',
       add: 'Agregar',
+      next: 'Siguiente',
+      previous: 'Anterior',
+      step: 'Paso',
       table: {
         empty: 'La tabla está vacía',
       },
@@ -358,6 +370,14 @@ export const translations = {
       5: {
         title: 'Development cost',
         content: '',
+        save: 'Save in the database',
+        update: 'Modify in the database',
+        alerts: {
+          must_enter_ufp: 'You must enter the functions for the calculation of PFSA.',
+          must_enter_afp: 'You must enter the functions for the calculation of PFA.',
+          loc_no_result: 'There is no result for the conversion of lines of code.',
+          cocomo_no_result: 'There is no value for the application of COCOMO.',
+        }
       },
       alerts: {
         must_enter_functions: 'You must enter the functions to get a result.',
@@ -369,6 +389,9 @@ export const translations = {
       cancel: 'Cancel',
       delete: 'Delete',
       add: 'Add',
+      next: 'Next',
+      previous: 'Previous',
+      step: 'Step',
       table: {
         empty: 'The table is empty',
       },
