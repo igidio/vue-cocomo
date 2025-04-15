@@ -4,16 +4,16 @@
       <h3 class="text-sm font-medium mb-2">Líneas de Código</h3>
       <div class="space-y-1">
         <div class="flex justify-between text-sm">
-          <span>Lenguaje:</span>
+          <span>{{ t("read.tabs.info.container.column_1.item_1") }}</span>
           <span class="font-semibold">{{ project.c_ldc.selected_language }}</span>
         </div>
         <div class="flex justify-between text-sm">
-          <span>Líneas de código:</span>
+          <span>{{ t("read.tabs.info.container.column_1.item_2") }}</span>
           <span class="font-semibold">{{ project.c_ldc.lines_of_code.toFixed(2) }}</span>
         </div>
         <div class="flex justify-between text-sm">
-          <span>KLOC:</span>
-          <span class="font-semibold">{{ project.c_ldc.kilolines_of_code.toFixed(4) }}</span>
+          <span>{{ t("read.tabs.info.container.column_1.item_3") }}</span>
+          <span class="font-semibold">{{ project.c_ldc.kilolines_of_code.toFixed(2) }}</span>
         </div>
       </div>
     </div>
@@ -25,16 +25,21 @@
           <span class="font-semibold">{{ project.d_cocomo.selected_model }}</span>
         </div>
         <div class="flex justify-between text-sm">
-          <span>Esfuerzo:</span>
-          <span class="font-semibold">{{ project.d_cocomo.effort_estimation }} persona(s)/mes</span>
+          <span>{{ t("read.tabs.info.container.column_2.item_2.label") }}</span>
+          <span class="font-semibold">{{ t('read.tabs.info.container.column_2.item_2.additional', { value: project.d_cocomo.effort_estimation }, project.d_cocomo.effort_estimation)
+            }}</span>
         </div>
         <div class="flex justify-between text-sm">
-          <span>Tiempo:</span>
-          <span class="font-semibold">{{ project.d_cocomo.time_estimation }} {{ (project.d_cocomo.time_estimation > 1) ? 'meses' : 'mes' }}</span>
+          <span>{{ t("read.tabs.info.container.column_2.item_3.label") }}</span>
+          <span class="font-semibold">{{ t(
+            "read.tabs.info.container.column_2.item_3.additional",
+            { value: project.d_cocomo.time_estimation},
+            project.d_cocomo.time_estimation
+          ) }}</span>
         </div>
         <div class="flex justify-between text-sm">
-          <span>Tamaño del equipo:</span>
-          <span class="font-semibold">{{ project.d_cocomo.team_size_calculation }} {{ ( +project.d_cocomo.team_size_calculation > 1) ? 'personas' : 'persona' }}</span>
+          <span>{{ t("read.tabs.info.container.column_2.item_4.label") }}:</span>
+          <span class="font-semibold">{{ t("read.tabs.info.container.column_2.item_4.additional", { value: project.d_cocomo.team_size_calculation}, project.d_cocomo.team_size_calculation) }}</span>
         </div>
       </div>
     </div>
@@ -42,6 +47,7 @@
 </template>
 <script setup lang="ts">
 import type { Item } from '@/data/interfaces'
-
+import { useI18n } from 'vue-i18n'
 defineProps<{ project: Item }>()
+const { t } = useI18n()
 </script>

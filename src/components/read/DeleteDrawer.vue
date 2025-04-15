@@ -5,16 +5,16 @@
     </DrawerTrigger>
     <DrawerContent>
       <DrawerHeader>
-        <DrawerTitle>Eliminar proyecto</DrawerTitle>
-        <DrawerDescription> ¿Seguro desea eliminar este proyecto?.</DrawerDescription>
+        <DrawerTitle>{{ t("read.delete.title") }}</DrawerTitle>
+        <DrawerDescription>{{ t("read.delete.description") }}</DrawerDescription>
       </DrawerHeader>
       <DrawerFooter class="flex flex-row justify-end">
         <DrawerClose>
-          <Button variant="outline"> Cancelar</Button>
+          <Button variant="outline">{{ t("ui.cancel") }}</Button>
         </DrawerClose>
         <Button @click="on_submit" variant="destructive" :disabled="is_loading">
           <Loader2 class="w-4 h-4 mr-2 animate-spin" v-if="is_loading" />
-          Eliminar
+          {{ t("ui.delete") }}
         </Button>
       </DrawerFooter>
     </DrawerContent>
@@ -38,12 +38,13 @@ import { useRoute, useRouter } from 'vue-router'
 import { toast } from 'vue-sonner'
 import { inject, ref } from 'vue'
 import { DatabaseService } from '@/data/classes'
+import { useI18n } from 'vue-i18n'
 const route = useRoute()
 const router = useRouter()
 
 const is_loading = ref(false)
 const database = inject<DatabaseService>('database')!
-
+const { t } = useI18n()
 const on_submit = async () => {
   const id = route.params.id as string
   is_loading.value = true

@@ -11,17 +11,18 @@
       </div>
       <div class="mt-4 pt-4 border-t">
         <div class="flex justify-between text-sm">
-          <span>Suma de factores:</span>
+          <span>{{ t("read.tabs.afp.container.footer.1") }}:</span>
           <span class="font-medium">{{ project.b_afp.sum }}</span>
         </div>
         <div class="flex justify-between text-sm mt-1">
-          <span>Resultado:</span>
+          <span>{{ t("read.tabs.afp.container.footer.2") }}:</span>
           <span class="font-medium">{{ project.b_afp.result.toFixed(2) }}</span>
         </div>
       </div>
 </template>
 <script setup lang="ts">
 import type { Item } from '@/data/interfaces'
+import { useI18n } from 'vue-i18n'
 defineProps<{ project: Item }>()
-
+const { t } = useI18n()
 </script>

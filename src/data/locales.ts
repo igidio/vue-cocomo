@@ -137,11 +137,11 @@ export const translations = {
           },
           2: {
             label: 'Cálculo de tiempo: {0}',
-            additional: 'un mes | {value} meses',
+            additional: 'N/D | un mes | {value} meses',
           },
           3: {
             label: 'Tamaño del equipo: {0}',
-            additional: 'una persona | {value} personas',
+            additional: 'N/D | una persona | {value} personas',
           }
         }
       },
@@ -178,22 +178,71 @@ export const translations = {
       tabs: {
         ufp: {
           title: "Puntos de Función (UFP)",
-          container: {}
+          container: {
+            table_columns: {
+              1: "Descripción",
+              2: "Tipo",
+              3: "Peso",
+            },
+            footer: {
+              subtitle: "Resultados por tipo",
+            }
+          }
         },
         afp: {
           title: "Factores de ajuste (AFP)",
-          container: {}
+          container: {
+            footer: {
+              1: "Suma de factores",
+              2: "Resultado",
+            }
+          }
         },
         info: {
           title: "Información técnica",
-          container: {}
+          container: {
+            column_1: {
+              subtitle: "Líneas de Código",
+              item_1: "Lenguaje",
+              item_2: "Líneas de código",
+              item_3: "KLDC",
+            },
+            column_2: {
+              subtitle: "Modelo COCOMO",
+              item_1: "Modelo",
+              item_2: {
+                label: 'Esfuerzo',
+                additional: 'no personas/mes | una persona/mes | {value} personas/mes',
+              },
+              item_3: {
+                label: 'Tiempo',
+                additional: 'N/D | un mes | {value} meses',
+              },
+              item_4: {
+                label: 'Tamaño del equipo',
+                additional: 'N/D | una persona | {value} personas',
+              },
+            }
+          }
         },
         costs: {
           title: "Costos",
-          container: {}
+          container: {
+            title: "Costo total",
+            subtitle: {
+              1: 'Basado en ',
+              2: 'una persona/mes | {value} personas/mes',
+              3: ' y ',
+              4: 'un mes | {value} meses',
+              5: ' de desarrollo'
+            }
+          }
         },
+      },
+      delete: {
+        title: 'Eliminar proyecto',
+        description: '¿Está seguro de que desea eliminar este proyecto?',
       }
-
     },
     side_menu: {
       title: 'Resumen',
@@ -224,6 +273,7 @@ export const translations = {
       save: 'Guardar',
       cancel: 'Cancelar',
       delete: 'Eliminar',
+      modify: 'Modificar',
       add: 'Agregar',
       next: 'Siguiente',
       previous: 'Anterior',
@@ -268,20 +318,70 @@ export const translations = {
       tabs: {
         ufp: {
           title: "Function Points (UFP)",
-          container: {}
+          container: {
+            table_columns: {
+              1: "Description",
+              2: "Type",
+              3: "Weight",
+            },
+            footer: {
+              subtitle: "Results by type",
+            }
+          },
         },
         afp: {
           title: "Adjustment factors (AFP)",
-          container: {}
+          container: {
+            footer: {
+              1: "Sum of factors",
+              2: "Result",
+            }
+          }
         },
         info: {
           title: "Technical information",
-          container: {}
+          container: {
+            column_1: {
+              subtitle: "Lines of Code",
+              item_1: "Language",
+              item_2: "Lines of code",
+              item_3: "KLOC",
+            },
+            column_2: {
+              subtitle: "COCOMO Model",
+              item_1: "Model",
+              item_2: {
+                label: 'Effort',
+                additional: 'N/A | one person/month | {value} person/months',
+              },
+              item_3: {
+                label: 'Time',
+                additional: 'N/A | one month | {value} months',
+              },
+              item_4: {
+                label: 'Team size',
+                additional: 'N/A | one person | {value} persons',
+              },
+            }
+          }
         },
         costs: {
           title: "Costs",
-          container: {}
+          container: {
+            title: "Total cost",
+            subtitle: {
+              1: 'Based on ',
+              2: 'no person/month | one person/month | {value} persons/month',
+              3: ' and ',
+              4: 'one month | {value} months',
+              5: ' of development'
+            }
+          }
         },
+      },
+      delete: {
+        title: 'Delete project',
+        description: 'Are you sure you want to delete this project?',
       }
     },
 
@@ -451,6 +551,7 @@ export const translations = {
       save: 'Save',
       cancel: 'Cancel',
       delete: 'Delete',
+      modify: 'Modify',
       add: 'Add',
       next: 'Next',
       previous: 'Previous',

@@ -27,12 +27,12 @@
         >
           <Button size="sm" variant="outline">
             <Pen />
-            Modificar
+            {{ t("ui.modify") }}
           </Button>
         </RouterLink>
         <Button size="sm" variant="outline" @click="is_open = true">
           <Trash2 />
-          Eliminar
+          {{ t("ui.delete") }}
         </Button>
       </div>
     </div>

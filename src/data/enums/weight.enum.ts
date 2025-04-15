@@ -1,5 +1,5 @@
 export enum WeightEnum {
-  LOW = 'Bajo',
-  MEDIUM = 'Medio',
-  HIGH = 'Alto',
+  LOW = 'Low',
+  MEDIUM = 'Medium',
+  HIGH = 'High',
 }

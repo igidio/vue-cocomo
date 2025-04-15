@@ -30,9 +30,9 @@ export enum Type {
 }
 
 export enum Weight {
-  Alto = "Alto",
-  Bajo = "Bajo",
-  Medio = "Medio",
+  HIGH = "High",
+  LOW = "Low",
+  MEDIUM = "Medium",
 }
 
 export interface ResultsByType {
