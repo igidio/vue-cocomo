@@ -13,10 +13,12 @@ import MainStep from '@/components/steps/MainStep.vue'
 import { LoaderCircle } from 'lucide-vue-next'
 import { languages_data, software_data } from '@/data/sample'
 import { DatabaseService } from '@/data/classes'
+import { useI18n } from 'vue-i18n'
 const { a_step, b_step, name, step_index, mode, id, c_step, d_step } =
   storeToRefs(useProcessStore())
 const is_loading = ref(true)
 
+const { t } = useI18n()
 onMounted(async () => {
   const database = inject<DatabaseService>('database')!
 
@@ -35,4 +37,6 @@ onMounted(async () => {
       d_step.value = software_data[response.d_cocomo.selected_model as keyof typeof software_data]    })
     .finally(() => (is_loading.value = false))
 })
+
+document.title = t('edit.title')
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <StepCard :title="t('steps.5.title')" :content="t('steps.5.title')">
+  <StepCard :title="t('steps.5.title')" :content="t('steps.5.content')">
     <template #top>
       <div
         class="flex flex-col justify-items-center content-center gap-4 justify-center text-center"

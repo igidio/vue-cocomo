@@ -133,4 +133,5 @@ onMounted(async () => {
 })
 
 const is_open = ref(false)
+document.title = t('read.title')
 </script>

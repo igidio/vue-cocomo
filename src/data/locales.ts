@@ -1,6 +1,9 @@
+import { markdown_data } from '@/data/sample'
+
 export const translations = {
   es: {
     main: {
+      title: 'Vue COCOMO',
       create_button: 'Crear nuevo proyecto',
       empty: {
         span: 'No hay ningún proyecto todavía, prueba {0}.',
@@ -13,6 +16,7 @@ export const translations = {
       }
     },
     create: {
+      title: 'Crear nuevo proyecto',
       change_name: {
         title: 'Cambiar nombre del proyecto',
         input: {
@@ -24,19 +28,7 @@ export const translations = {
     steps: {
       1: {
         title: 'Cálculo de PFSA',
-        content: `
-      Los PFSA se calculan identificando las funciones del sistema, como entradas, salidas, consultas, archivos internos y archivos externos.
-
-      Asigna un peso a cada función según su complejidad (baja, media, alta) y suma los valores para obtener el PFSA, donde:
-
-      - **Entradas externas (EI):** Datos que ingresan al sistema desde el usuario o sistemas externos.
-      - **Salidas externas (EO):** Información que el sistema genera y envía al usuario o sistemas externos.
-      - **Consultas externas (EQ):** Interacciones que permiten al usuario obtener información específica.
-      - **Ficheros lógicos internos (ILF):** Bases de datos o archivos gestionados por el sistema.
-      - **Ficheros lógicos externos (ELF):** Bases de datos o archivos gestionados por sistemas externos pero utilizados por el sistema.
-
-      Es importante asignar complejidad, según los criterios como el número de campos o el nivel de interacción. De acuerdo a la complejidad es que se asigna un peso para cada función del sistema.
-    `,
+        content: markdown_data.a_step.es,
         table_columns: {
           1: 'Nro.',
           2: 'Nombre',
@@ -77,7 +69,7 @@ export const translations = {
       },
       2: {
         title: 'Cálculo de PFA',
-        content: '',
+        content: markdown_data.b_step.es,
         table_columns: {
           1: 'Nro.',
           2: 'Nombre',
@@ -105,7 +97,7 @@ export const translations = {
       },
       3: {
         title: 'Conversión de PF a LDC',
-        content: '',
+        content: markdown_data.c_step.es,
         table_columns: {
           1: 'Nro.',
           2: 'Lenguaje de programación',
@@ -125,7 +117,7 @@ export const translations = {
       },
       4: {
         title: 'Aplicación de COCOMO',
-        content: '',
+        content: markdown_data.d_step.es,
         input: {
           label: 'Selecciona el modelo',
           placeholder: 'Seleccione',
@@ -152,7 +144,7 @@ export const translations = {
       },
       5: {
         title: 'Costo de desarrollo',
-        content: '',
+        content: markdown_data.e_step.es,
         save: 'Guardar en la base de datos',
         update: 'Modificar en la base de datos',
         alerts: {
@@ -170,6 +162,7 @@ export const translations = {
       },
     },
     read: {
+      title: 'Detalles del proyecto',
       header: {
         title: 'Detalles del proyecto',
         id: 'ID',
@@ -249,6 +242,7 @@ export const translations = {
         description: '¿Está seguro de que desea eliminar este proyecto?',
       }
     },
+    edit: {title: 'Modificar proyecto'},
     side_menu: {
       title: 'Resumen',
       1: {
@@ -284,6 +278,8 @@ export const translations = {
       previous: 'Anterior',
       step: 'Paso',
       none: 'Ninguno',
+      description: 'Descripción',
+      close: 'Cerrar',
       table: {
         empty: 'La tabla está vacía',
       },
@@ -312,6 +308,7 @@ export const translations = {
   },
   en: {
     main: {
+      title: 'Vue COCOMO',
       create_button: 'Create new project',
       empty: {
         span: 'There are no project yet, try {0}.',
@@ -324,6 +321,7 @@ export const translations = {
       }
     },
     create: {
+      title: 'Create new project',
       change_name: {
         title: 'Change project name',
         input: {
@@ -333,6 +331,7 @@ export const translations = {
       },
     },
     read: {
+      title: 'Project details',
       header: {
         title: 'Project details',
         id: 'ID',
@@ -412,7 +411,9 @@ export const translations = {
         description: 'Are you sure you want to delete this project?',
       }
     },
-
+    edit: {
+      title: 'Edit project',
+    },
     side_menu: {
       title: 'Summary',
       1: {
@@ -441,7 +442,7 @@ export const translations = {
     steps: {
       1: {
         title: 'Calculation of UFP',
-        content: ``,
+        content: markdown_data.a_step.en,
         table_columns: {
           1: 'No.',
           2: 'Name',
@@ -485,7 +486,7 @@ export const translations = {
       },
       2: {
         title: 'Calculation of AFP',
-        content: '',
+        content: markdown_data.b_step.en,
         table_columns: {
           1: 'No.',
           2: 'Name',
@@ -513,7 +514,7 @@ export const translations = {
       },
       3: {
         title: 'Conversion of FP to LOC',
-        content: '',
+        content: markdown_data.c_step.en,
         table_columns: {
           1: 'No.',
           2: 'Programming language',
@@ -533,7 +534,7 @@ export const translations = {
       },
       4: {
         title: 'Application of COCOMO',
-        content: '',
+        content: markdown_data.d_step.en,
         input: {
           label: 'Select model',
           placeholder: 'Select',
@@ -560,7 +561,7 @@ export const translations = {
       },
       5: {
         title: 'Development cost',
-        content: '',
+        content: markdown_data.e_step.en,
         save: 'Save in the database',
         update: 'Modify in the database',
         alerts: {
@@ -585,6 +586,8 @@ export const translations = {
       previous: 'Previous',
       step: 'Step',
       none: 'None',
+      close: 'Close',
+      description: 'Description',
       table: {
         empty: 'The table is empty',
       },

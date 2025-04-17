@@ -39,4 +39,6 @@ onMounted(async () => {
     .readAll()
     .finally(async () => (is_loading.value = false))
 })
+
+document.title = g('main.title')
 </script>
