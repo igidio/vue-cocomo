@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { software_data } from '@/data/sample'
-import { getComplexity } from '@/data/objects/get_complexity.ts'
+import { getComplexity } from '@/data/objects/get_complexity'
 import type { AUfpItem, c_step_interfaace } from '@/data/interfaces'
 
 export const useProcessStore = defineStore('process', () => {
