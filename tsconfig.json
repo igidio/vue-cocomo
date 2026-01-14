@@ -10,9 +10,10 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types":["vue-i18n/dist/vue-i18n.d.ts"]
+    "types": ["vue-i18n/dist/vue-i18n.d.ts"]
   }
 }
