@@ -2,6 +2,13 @@
 
 A modern web application for estimating costs and effort in software projects, based on the COCOMO model and Function Point Analysis. It provides a guided, validated, and visually appealing experience for calculating critical estimation metrics, replacing traditional spreadsheets and enabling secure and efficient local project management.
 
+<p align="center">
+  <img src="https://i.imgur.com/SpinJ7a.jpeg" width="49%" />
+  <img src="https://imgur.com/bVfnXs4.jpg" width="49%" />
+  <img src="https://i.imgur.com/uQq5P3a.jpeg" width="49%" />
+  <img src="https://i.imgur.com/UIbiapy.png" width="49%" />
+</p>
+
 ## Features
 
 - **Project Management**: Create, edit, view, and delete software project estimates.
