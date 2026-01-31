@@ -1,39 +1,76 @@
 # vue-cocomo
 
-This template should help get you started developing with Vue 3 in Vite.
+A modern web application for estimating costs and effort in software projects, based on the COCOMO model and Function Point Analysis. It provides a guided, validated, and visually appealing experience for calculating critical estimation metrics, replacing traditional spreadsheets and enabling secure and efficient local project management.
 
-## Recommended IDE Setup
+## Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Project Management**: Create, edit, view, and delete software project estimates.
+- **Estimation Wizard**: A step-by-step flow for entering Function Point data and Adjustment Factors.
+- **Automatic Calculation**: Instantly get key metrics such as UFP, AFP, effort, and estimated cost.
+- **Local Persistence**: Save your projects in the browser using IndexedDB, no backend required.
+- **Robust Validation**: Forms validated with Vee-Validate to prevent input errors.
+- **Multilingual Support**: Interface available in Spanish and English.
+- **Modern & Responsive UI**: Built with Tailwind CSS and reusable components for a professional experience.
 
-## Type Support for `.vue` Imports in TS
+## Technologies Used
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- **Vue 3 (Composition API)**: Main framework for the user interface.
+- **Vite**: Ultra-fast bundler for development and build.
+- **TypeScript**: Static typing for greater robustness and maintainability.
+- **Pinia**: Global state management.
+- **Tailwind CSS v4**: CSS utilities for fast and responsive design.
+- **Shadcn-vue**: Reusable and modern UI components.
+- **Vee-Validate**: Form validation and business rules.
+- **IndexedDB (idb)**: Local project storage.
+- **Vue I18n**: Internationalization.
+- **Lucide Vue Next**: Lightweight and consistent SVG iconography.
 
-## Customize configuration
+> _Note: Please check `package.json` for the full list of dependencies._
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Getting Started
 
-## Project Setup
+### Prerequisites
 
-```sh
-npm install
-```
+- [Node.js](https://nodejs.org/) >= 18.x
+- [npm](https://www.npmjs.com/) >= 9.x or [yarn](https://yarnpkg.com/) >= 1.22
 
-### Compile and Hot-Reload for Development
+### Installation
 
-```sh
-npm run dev
-```
+1. Clone the repository:
 
-### Type-Check, Compile and Minify for Production
+   ```bash
+   git clone https://github.com/<your-username>/vue-cocomo.git
+   cd vue-cocomo
+   ```
 
-```sh
-npm run build
-```
+2. Install the dependencies:
 
-### Lint with [ESLint](https://eslint.org/)
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-```sh
-npm run lint
-```
+3. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173` to see the application in action.
+
+## Project Structure
+
+- 📁 src/
+	- 📁 components/ - Reusable UI components
+	- 📁 views/ - Main views (Main, Create, Edit, Read)
+	- 📁 stores/ - Global state management (Pinia)
+	- 📁 services/ - Data access logic (IndexedDB)
+	- 📁 i18n/ - Internationalization files
+	- 📁 assets/ - Static resources (images, icons)
+	- 📄 App.vue - Root component
+- 📄 main.ts - Application entry point
+
+## License
+This project is licensed under the MIT License.
