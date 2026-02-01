@@ -1,8 +1,10 @@
 <template>
-  <StepCard :title="t('steps.1.title')" :content="t('steps.1.content')">
+  <StepCard :title="t('steps.1.title')" :content="t('steps.1.content')" class="w-full">
     <template #top>
       <div class="flex flex-col gap-2 mb-4">
-        <GlobalTable :headers="columns" :data="mapData" :on_click="open_modal" />
+        <div class="w-[100%] overflow-x-scroll">
+          <GlobalTable :headers="columns" :data="mapData" :on_click="open_modal" />
+        </div>
         <div class="flex flex-row w-full justify-center">
           <AModalModify :label="t('steps.1.modals.modify')" v-model="is_open" :id="selected" />
           <AModalCreate :label="t('steps.1.modals.create')" />
@@ -39,9 +41,9 @@ import { storeToRefs } from 'pinia'
 import type { header_column_interface, table_data_interface } from '@/data/interfaces'
 
 import GlobalTable from '@/components/GlobalTable.vue'
-import { getComplexity } from '@/data/objects/get_complexity.ts'
-import { useProcessStore } from '@/store/process.store.ts'
-import { WeightEnum } from '@/data/enums/weight.enum.ts'
+import { getComplexity } from '@/data/objects/get_complexity'
+import { useProcessStore } from '@/store/process.store'
+import { WeightEnum } from '@/data/enums/weight.enum'
 import AModalCreate from '@/components/modal/AModalCreate.vue'
 import AModalModify from '@/components/modal/AModalModify.vue'
 import { CircleAlert } from 'lucide-vue-next'
@@ -54,24 +56,24 @@ const { a_step, ufp_result, typeResults } = storeToRefs(useProcessStore())
 
 const columns = computed<header_column_interface[]>(() => [
   {
-    label: t("steps.1.table_columns.1"),
+    label: t('steps.1.table_columns.1'),
   },
   {
-    label: t("steps.1.table_columns.2"),
+    label: t('steps.1.table_columns.2'),
   },
   {
-    label: t("steps.1.table_columns.3"),
+    label: t('steps.1.table_columns.3'),
   },
   {
-    label: t("steps.1.table_columns.4"),
+    label: t('steps.1.table_columns.4'),
     class: 'w-[50px]',
   },
   {
-    label: t("steps.1.table_columns.5"),
+    label: t('steps.1.table_columns.5'),
     class: 'w-[50px]',
   },
   {
-    label: t("steps.1.table_columns.6"),
+    label: t('steps.1.table_columns.6'),
     class: 'w-[50px]',
   },
 ])

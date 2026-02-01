@@ -19,7 +19,7 @@
       <GlobalCard class="w-[280px] h-fit hidden lg:block" :label="t('side_menu.title')">
         <SidebarContent />
       </GlobalCard>
-      <div class="flex-1">
+      <div class="w-full">
         <component :is="steps[step_index - 1].component" />
       </div>
     </div>
@@ -35,7 +35,7 @@ import GlobalStepper from '@/components/GlobalStepper.vue'
 
 import ChangeName from '@/components/steps/ChangeName.vue'
 import { storeToRefs } from 'pinia'
-import { useProcessStore } from '@/store/process.store.ts'
+import { useProcessStore } from '@/store/process.store'
 import MobileStepper from '@/components/steps/MobileStepper.vue'
 
 import { useI18n } from 'vue-i18n'
