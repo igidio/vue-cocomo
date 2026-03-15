@@ -6,7 +6,7 @@ import App from './App.vue'
 import router from './router'
 import { AxiosService, DatabaseService, indexedDBInstance } from '@/data/classes'
 import { createI18n } from 'vue-i18n'
-import { translations } from '@/data/locales.ts'
+import { translations } from '@/data/locales'
 
 const fetch_from_server = import.meta.env.VITE_FETCH_FROM_SERVER
 const init = (fetch_from_server == 'true') ? new AxiosService(import.meta.env.VITE_SERVER_URL) : await indexedDBInstance
