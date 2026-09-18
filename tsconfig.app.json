@@ -1,4 +1,6 @@
 {
+
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": [
     "env.d.ts",
     "src/**/*",
@@ -9,8 +11,7 @@
   ],
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "baseUrl": ".",
-    "ignoreDeprecations": "6.0",
+    "strict": false,
     "paths": {
       "@/*": [
         "./src/*"

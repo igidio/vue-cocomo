@@ -1,4 +1,6 @@
 {
+  // Raiz "solucion": solo enlaza los proyectos. Las opciones van en cada uno
+  // (aqui serian ignoradas por `tsc --build` y solo confunden).
   "files": [],
   "references": [
     {
@@ -7,13 +9,5 @@
     {
       "path": "./tsconfig.app.json"
     }
-  ],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "ignoreDeprecations": "6.0",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "types": ["vue-i18n/dist/vue-i18n.d.ts"]
-  }
+  ]
 }

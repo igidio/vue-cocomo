@@ -19,7 +19,10 @@ export const useProcessStore = defineStore('process', () => {
     }, 0)
   })
 
-  const typeResults = computed(() => {
+
+  type type_result = { label: string; value: number }
+
+  const typeResults = computed<Record<string, type_result>>(() => {
     return a_step.value.reduce(
       (acc, item) => {
         const type = item.type
@@ -27,7 +30,7 @@ export const useProcessStore = defineStore('process', () => {
         acc[type].value += getComplexity[type][item.weight]
         return acc
       },
-      {},
+      {} as Record<string, type_result>,
     )
   })
 
