@@ -11,7 +11,7 @@
               </Button>
             </template>
             <article class="prose prose-slate max-w-none text-sm h-64 overflow-y-scroll">
-              <div v-html="md.render(content)"></div>
+              <div v-html="render_markdown(content)"></div>
             </article>
             <template #footer>
               <DrawerClose>
@@ -34,11 +34,14 @@ import { Info } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import GlobalDrawer from '@/components/GlobalDrawer.vue'
 
-import markdownit from 'markdown-it'
-import mathjax3 from 'markdown-it-mathjax3'
-const md = markdownit()
+import { marked } from 'marked'
+import marked_katex from 'marked-katex-extension'
 import { useI18n } from 'vue-i18n'
-md.use(mathjax3)
+
+marked.use(marked_katex({ throwOnError: false }))
+
+const render_markdown = (raw_markdown: string) => marked.parse(raw_markdown, { async: false })
+
 const { t } = useI18n()
 
 defineProps<{

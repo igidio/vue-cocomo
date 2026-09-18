@@ -224,7 +224,6 @@ The FAE is obtained by multiplying the values assigned to each adjustment factor
 
 The formula used is:
 
-$$
 $$E = a \\times \(KLDC\)\^b$$
 
 Where:
@@ -236,7 +235,7 @@ Where:
 
 The formula used is:
 
-$$
+
 $$T = c \\times (Effort)^d$$
 $$
 
