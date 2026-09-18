@@ -86,16 +86,19 @@ To calculate UFP we need:
 ### **3. Calcular el Valor de Ajuste**
 
 - Para cada factor de ajuste, asigna un valor entre **0 (sin influencia)** y **5 (influencia muy alta)**.
-- Suma los valores asignados a los 14 factores (_ΣFi_).
+- Suma los valores asignados a los 14 factores ($\\Sigma F_i$).
 
 ### **4. Aplicar la Fórmula de Ajuste**
 
 - Usa la siguiente fórmula:
-\n$AFP=UFP×(0.65+0.01×ΣFi)AFP=UFP×(0.65+0.01×ΣFi)$
+
+$$
+AFP = UFP \\times (0.65 + 0.01 \\times \\Sigma F_i)
+$$
 
 - Donde:
-    - _ΣFi_ es la suma de los valores de los factores de ajuste.
-    - 0.650.65 y 0.010.01 son constantes definidas por el método.`,
+    - $\\Sigma F_i$ es la suma de los valores de los factores de ajuste.
+    - **0.65** y **0.01** son constantes definidas por el método.`,
     en: `
 The **Adjusted Function Points (AFP)** is a metric used in software estimation that modifies the **Unadjusted Function Points (UFP)** according to system complexity factors. It is calculated following these steps:
 ### **1. Calculate UFP**
@@ -125,12 +128,16 @@ The **Adjusted Function Points (AFP)** is a metric used in software estimation t
     -   **Ease of change:** Can modifications be made without affecting system stability?
 ### **3. Calculate the Adjustment Value**
 -   Assign a value between **0 (no influence)** and **5 (very high influence)** to each adjustment factor.
--   Sum the values assigned to all 14 factors (_ΣFi_).
+-   Suma los valores asignados a los 14 factores ($\\Sigma F_i$).
 ### **4. Apply the Adjustment Formula**
 -   Use the following formula:
-\n$AFP=UFP×(0.65+0.01×ΣFi)$
+
+$$
+AFP = UFP \\times (0.65 + 0.01 \\times \\Sigma F_i)
+$$
+
 -   Where:
-    -   _ΣFi_ is the sum of the adjustment factor values.
+    -   $\\Sigma F_i$ is the sum of the adjustment factor values.
     -   **0.65** and **0.01** are constants defined by the method.`,
   },
   c_step: {
@@ -147,8 +154,8 @@ The **Adjusted Function Points (AFP)** is a metric used in software estimation t
         - TypeScript: **50 LDC por PF**
 3. **Aplicar la fórmula de conversión**
     - Multiplica los **PFA** por el factor de conversión del lenguaje de programación:
-    \n
-    $LOC=PFAxFactor de conversión$`,
+
+    $$LOC=PFA \\times Factor  de  conversión$$`,
     en: `The **conversion of Function Points (FP) to Lines of Code (LOC)** is a method used in software estimation to translate functionality measured in function points into an approximate number of lines of code needed to implement that functionality.
 
 ### **How to Calculate FP to LOC Conversion**
@@ -162,8 +169,8 @@ The **Adjusted Function Points (AFP)** is a metric used in software estimation t
         - TypeScript: **50 LOC per FP**
 3. **Apply the conversion formula**
     - Multiply the **AFP** by the conversion factor of the programming language:
-    \n
-    $$LOC=AFP×ConversionFactor$$`,
+
+    $$LDC = AFP \\times Conversion Factor$$`,
   },
   d_step: {
     es: `Para aplicar COCOMO, se siguen estos pasos:
@@ -182,9 +189,7 @@ El FAE se obtiene multiplicando los valores asignados a cada factor de ajuste.
 
 Se usa la fórmula:
 
-$$
-E=a×(KLDC)^b
-$$
+$$E = a \\times \(KLDC\)\^b$$
 
 Donde **a** y **b** son constantes del modelo (dependiendo del tipo de proyecto) y **KLDC** son las miles de líneas de código entregadas.
 
@@ -192,17 +197,16 @@ Donde **a** y **b** son constantes del modelo (dependiendo del tipo de proyecto)
 
 Se usa la fórmula:
 
-$$
-T=c×(Esfuerzo)^d
-$$
+$$T = c \\times (Esfuerzo)^d$$
 
 Donde **T** es el tiempo estimado en **meses** y **c**, **d** son las constantes del modelo (dependiendo del tipo de proyecto).
 
 ### Cálculo del número de personas
 
 Se obtiene dividiendo el esfuerzo entre el tiempo estimado:
+
 $$
-y = {E \\over T}
+y = \\{E \\over T\\}
 $$`,
     en: `Applying COCOMO:
 
@@ -221,8 +225,7 @@ The FAE is obtained by multiplying the values assigned to each adjustment factor
 The formula used is:
 
 $$
-E=a×(KLDC)^b
-$$
+$$E = a \\times \(KLDC\)\^b$$
 
 Where:
 
@@ -234,7 +237,7 @@ Where:
 The formula used is:
 
 $$
-T=c×(Effort)^d
+$$T = c \\times (Effort)^d$$
 $$
 
 Where:
@@ -247,22 +250,23 @@ Where:
 The number of required personnel is determined by dividing the effort by the estimated time:
 
 $$
-y = {E \\over T}
+y = \\{E \\over T\\}
 $$`,
   },
   e_step: {
     es: `El **costo de desarrollo** es el gasto total necesario para diseñar, construir y entregar un producto o sistema de software. Incluye factores como salarios del equipo, herramientas, infraestructura, pruebas y mantenimiento.
 
-Para calcular el costo de desarrollo por mes debemos multiplicar el número de personas ‘**P**’ por el tiempo de desarrollo (**T**) en conjunto con el sueldo medio de un desarrollador por mes (**500$**):
+Para calcular el costo de desarrollo por mes debemos multiplicar el número de personas ‘**P**’ por el tiempo de desarrollo (**T**) en conjunto con el sueldo medio de un desarrollador por mes (**500\\$**):
 
 $$
-CD=P*T*500
+CD = P \\times T \\times 500
 $$`,
     en: `The development cost is the total expense required to design, build, and deliver a software product or system. It includes factors such as team salaries, tools, infrastructure, testing, and maintenance.
 
-To calculate the monthly development cost, we must multiply the number of people 'P' by the development time 'T', along with the average salary of a developer per month ($500):
+To calculate the monthly development cost, we must multiply the number of people 'P' by the development time 'T', along with the average salary of a developer per month (\\$500):
+
 $$
-DC=P*T*500
+DC = P \\times T \\times 500
 $$`,
   },
 }
