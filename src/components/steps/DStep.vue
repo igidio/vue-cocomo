@@ -55,17 +55,15 @@
 </template>
 
 <script setup lang="ts">
-import { software_data } from '../../data/sample'
-import GlobalTable from '@/components/GlobalTable.vue'
+import { software_data } from '@/data/sample'
 import type { header_column_interface, table_data_interface } from '@/data/interfaces'
 import { storeToRefs } from 'pinia'
-import { useProcessStore } from '@/store/process.store.ts'
-import GlobalSelect from '@/components/GlobalSelect.vue'
-import StepCard from '@/components/steps/StepCard.vue'
+
 import { CircleAlert } from 'lucide-vue-next'
-import IconItem from '@/components/steps/IconItem.vue'
+
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
+import { useProcessStore } from '@/store/process.store'
 
 const { t } = useI18n()
 const { d_step, effort_estimation, time_estimation, team_size_calculation } =

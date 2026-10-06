@@ -126,3 +126,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}

@@ -235,7 +235,7 @@ Where:
 
 The formula used is:
 
-
+$$
 $$T = c \\times (Effort)^d$$
 $$
 
